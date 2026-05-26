@@ -1,0 +1,9 @@
+# Netlify build configuration.
+# Keeps build settings in source control so we don't depend on the dashboard.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
