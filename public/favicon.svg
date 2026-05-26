@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#0a1f3d"/>
+  <path d="M14 18 L20 14 L24 20 L32 14 L40 20 L44 14 L50 18 L48 30 L16 30 Z"
+        fill="#ffffff" opacity="0.95"/>
+  <text x="50%" y="74%" text-anchor="middle" dominant-baseline="middle"
+        font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="22" fill="#ffffff">
+    FM
+  </text>
+</svg>

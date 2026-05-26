@@ -1,0 +1,48 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Crown FM — professional facilities management services.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-white text-slate-900 font-sans antialiased">
+    <header class="border-b border-slate-200">
+      <div class="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
+        <a href="/" class="font-semibold text-lg text-brand-900">Crown FM</a>
+        <nav class="flex gap-6 text-sm">
+          <a href="/services" class="hover:text-brand-700">Services</a>
+          <a href="/about" class="hover:text-brand-700">About</a>
+          <a href="/contact" class="hover:text-brand-700">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="mt-24 border-t border-slate-200 bg-slate-50">
+      <div class="mx-auto max-w-6xl px-4 py-8 text-sm text-slate-600 flex flex-col sm:flex-row justify-between gap-2">
+        <p>&copy; {new Date().getFullYear()} Crown FM. All rights reserved.</p>
+        <p><a href="/contact" class="hover:text-brand-700">Get in touch</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
