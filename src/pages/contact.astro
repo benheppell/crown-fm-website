@@ -1,9 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-// TODO: replace with the real Formspree form ID once we sign up.
-// Sign up at https://formspree.io, create a form, paste the ID below.
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/your-form-id";
+// Form submissions are handled by Netlify Forms. No third-party endpoint
+// is needed — Netlify detects `data-netlify="true"` in the built static
+// HTML during post-processing and saves submissions under
+// https://app.netlify.com/sites/<site>/forms.
 ---
 
 <BaseLayout
@@ -68,10 +69,19 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/your-form-id";
       </div>
 
       <form
-        action={FORMSPREE_ENDPOINT}
+        name="contact"
         method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
         class="lg:col-span-3 bg-white border border-slate-200 rounded-lg p-6 sm:p-8 space-y-5"
       >
+        <!-- Required so Netlify knows which form this is. -->
+        <input type="hidden" name="form-name" value="contact" />
+        <!-- Honeypot: real users leave this blank, bots fill it. Netlify silently drops those submissions. -->
+        <p class="hidden">
+          <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+
         <div class="grid sm:grid-cols-2 gap-5">
           <div>
             <label for="name" class="block text-sm font-medium text-brand-900"
@@ -157,8 +167,6 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/your-form-id";
             class="mt-1 block w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
           ></textarea>
         </div>
-
-        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" />
 
         <div class="flex items-center justify-between gap-4 flex-wrap">
           <p class="text-xs text-slate-500">

@@ -41,18 +41,27 @@ npm run dev      # http://localhost:4321
 npm run build    # static build into ./dist
 ```
 
+## Hosting
+
+- Deployed via **Netlify**, connected to the GitHub repo
+  `benheppell/crown-fm-website`. Every push to `main` triggers a build
+  and deploy automatically.
+- Build settings on Netlify: build command `npm run build`, publish
+  directory `dist`, branch `main`.
+- The contact form on `/contact` uses **Netlify Forms** — submissions
+  show up under the site's "Forms" tab in the Netlify dashboard. No
+  third-party form provider is wired in.
+
 ## Things still to do (good first tasks)
 
-- Replace placeholder copy on the homepage with real Crown FM messaging
-- Build out `/services`, `/about`, `/contact` pages (currently linked but
-  not created)
-- Add a real contact form (Netlify Forms or Formspree — pick one when
-  we decide on hosting)
-- Swap the placeholder favicon for the real Crown FM logo
-- Fill in the production URL in `astro.config.mjs` (currently a
-  placeholder)
+- Buy / point a real domain at the Netlify site and update the `site:`
+  URL in `astro.config.mjs` accordingly.
+- Swap the placeholder favicon for the real Crown FM logo when it's
+  ready.
 - Decide brand colours and update the `--color-brand-*` tokens in
-  `src/styles/global.css`
+  `src/styles/global.css`.
+- Replace placeholder phone numbers, email, and office address on
+  `/contact` with real Crown FM details.
 
 ## Things NOT to do
 
