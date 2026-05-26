@@ -2,119 +2,403 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Crown FM — Facilities Management">
-  <section class="mx-auto max-w-6xl px-4 py-20 sm:py-28">
-    <p class="text-sm font-semibold tracking-wide uppercase text-brand-700">
-      Facilities management
-    </p>
-    <h1 class="mt-3 text-4xl sm:text-5xl font-bold tracking-tight text-brand-900 max-w-3xl">
-      Buildings that work, so your team can get on with theirs.
-    </h1>
-    <p class="mt-6 max-w-2xl text-lg text-slate-600">
-      Crown FM looks after the mechanical, electrical, and fabric of
-      commercial buildings — planned maintenance, reactive callouts, and
-      statutory compliance, delivered by directly-employed engineers and
-      backed by a single point of contact.
-    </p>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a
-        href="/contact"
-        class="inline-flex items-center rounded-md bg-brand-700 px-5 py-3 text-white font-medium hover:bg-brand-900 transition"
-        >Request a quote</a
-      >
-      <a
-        href="/services"
-        class="inline-flex items-center rounded-md border border-slate-300 px-5 py-3 font-medium hover:border-slate-400 transition"
-        >See our services</a
-      >
+<BaseLayout
+  title="Crown FM | Facilities Management | Built Around Standards"
+  description="Crown Facilities Management — preventative maintenance, reactive support, and planned solutions for commercial and residential properties across London and the Southeast."
+>
+  <!-- ====== HERO ====== -->
+  <section class="hero">
+    <div class="hero__video">
+      {/* Replace placeholder with: <video autoplay muted loop playsinline src="/images/shard-video.mp4"></video> */}
+      <div class="hero__video--placeholder"></div>
     </div>
-  </section>
-
-  <section class="border-t border-slate-200 bg-brand-50">
-    <div class="mx-auto max-w-6xl px-4 py-16">
-      <h2 class="text-2xl sm:text-3xl font-bold text-brand-900">What we do</h2>
-      <div class="mt-10 grid sm:grid-cols-3 gap-8">
-        <div>
-          <h3 class="font-semibold text-brand-900">Planned maintenance</h3>
-          <p class="mt-2 text-slate-600 text-sm leading-relaxed">
-            Scheduled servicing of HVAC, electrical, water systems and
-            building fabric. Asset-registered, frequency-driven, fully
-            documented.
-          </p>
-        </div>
-        <div>
-          <h3 class="font-semibold text-brand-900">Reactive callouts</h3>
-          <p class="mt-2 text-slate-600 text-sm leading-relaxed">
-            One number, 24/7. Engineers on-site within agreed SLAs for
-            heating, plumbing, electrical and fabric failures.
-          </p>
-        </div>
-        <div>
-          <h3 class="font-semibold text-brand-900">Compliance &amp; inspections</h3>
-          <p class="mt-2 text-slate-600 text-sm leading-relaxed">
-            Statutory testing — gas safety, fixed wiring, fire, water hygiene
-            — logged against your assets and audit-ready on demand.
-          </p>
-        </div>
-      </div>
-      <p class="mt-10 text-sm">
-        <a href="/services" class="text-brand-700 font-medium hover:text-brand-900"
-          >Full service list →</a
-        >
+    <div class="hero__overlay"></div>
+    <div class="container">
+      <p class="section-label">Crown Facilities Management</p>
+      <h1>Built Around<br /><em>Standards.</em></h1>
+      <p class="hero__intro">
+        Preventative maintenance, reactive support, and planned solutions for
+        commercial and residential properties across London and the Southeast.
+        One team. Every trade. Zero stress.
       </p>
+      <div class="hero__btns">
+        <a href="#contact" class="btn btn--gold">Request A Quote</a>
+        <a href="tel:01276582081" class="btn btn--outline-white">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          01276 582 081
+        </a>
+      </div>
+      <div class="hero__badges">
+        <div class="hero__badge">
+          <div class="hero__badge-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <span>24/7 Response</span>
+        </div>
+        <div class="hero__badge">
+          <div class="hero__badge-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span>Fully Insured</span>
+        </div>
+        <div class="hero__badge">
+          <div class="hero__badge-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span>Quality Assured</span>
+        </div>
+        <div class="hero__badge">
+          <div class="hero__badge-icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <span>Experienced</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="border-t border-slate-200">
-    <div class="mx-auto max-w-6xl px-4 py-16 grid md:grid-cols-2 gap-10 items-start">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-brand-900">
-          Built for facilities and office managers who are tired of chasing.
-        </h2>
-        <p class="mt-4 text-slate-600 leading-relaxed">
-          Most FM contracts mean juggling sub-contractors, missed SLAs, and
-          paperwork that doesn't add up at audit time. Crown FM replaces that
-          with one team, one schedule, and one point of contact who actually
-          picks up the phone.
-        </p>
+  <!-- ====== WHO WE ARE ====== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about__grid">
+        <div class="reveal">
+          <p class="section-label">Who We Are</p>
+          <div class="gold-rule"></div>
+          <h2>Two Decades in<br />the <em>Construction</em> Industry</h2>
+          <p>
+            Crown Facilities Management was founded on a straightforward
+            principle: buildings should work. With over 20 years of hands-on
+            experience across the construction and facilities management
+            sectors, we understand what it takes to keep commercial and
+            residential properties safe, compliant, and performing at their
+            best.
+          </p>
+          <p>
+            We are a single-source provider. That means one point of contact,
+            one team, every trade. From reactive call-outs to planned
+            preventative maintenance, from full-scale renovations to
+            day-to-day cleaning and security, Crown delivers a consistent,
+            reliable standard across every service line.
+          </p>
+          <p>
+            Our clients trust us because we respond fast, communicate
+            clearly, and get it right the first time. No subcontractor
+            chains. No finger-pointing. Just a team that turns up, does the
+            work, and keeps your building running.
+          </p>
+          <div class="about__stats">
+            <div class="about__stat reveal">
+              <div class="about__stat-num">20+</div>
+              <span>Years Experience</span>
+            </div>
+            <div class="about__stat reveal">
+              <div class="about__stat-num">Rapid</div>
+              <span>Response</span>
+            </div>
+            <div class="about__stat reveal">
+              <div class="about__stat-num">24/7</div>
+              <span>Call Out</span>
+            </div>
+          </div>
+        </div>
+        <div class="about__image reveal">
+          {/* Replace with: <img src="/images/team-onsite.jpg" alt="Crown FM team on site"> */}
+          <span class="about__image-placeholder">&#9818;</span>
+        </div>
       </div>
-      <dl class="grid grid-cols-2 gap-6">
-        <div class="border-l-2 border-brand-500 pl-4">
-          <dt class="text-3xl font-bold text-brand-900">24/7</dt>
-          <dd class="mt-1 text-sm text-slate-600">Emergency response cover</dd>
-        </div>
-        <div class="border-l-2 border-brand-500 pl-4">
-          <dt class="text-3xl font-bold text-brand-900">100%</dt>
-          <dd class="mt-1 text-sm text-slate-600">Directly-employed engineers</dd>
-        </div>
-        <div class="border-l-2 border-brand-500 pl-4">
-          <dt class="text-3xl font-bold text-brand-900">1</dt>
-          <dd class="mt-1 text-sm text-slate-600">Account manager per client</dd>
-        </div>
-        <div class="border-l-2 border-brand-500 pl-4">
-          <dt class="text-3xl font-bold text-brand-900">Audit-ready</dt>
-          <dd class="mt-1 text-sm text-slate-600">Compliance records, always</dd>
-        </div>
-      </dl>
     </div>
   </section>
 
-  <section class="border-t border-slate-200 bg-brand-900">
-    <div class="mx-auto max-w-6xl px-4 py-16 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white">
-          Reviewing your FM contract?
-        </h2>
-        <p class="mt-3 text-brand-100 max-w-xl">
-          We're happy to look over your current schedule of works and tell you
-          honestly whether we can improve on it. No obligation.
+  <!-- ====== SERVICES ====== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services__header reveal">
+        <p class="section-label">Our Services</p>
+        <div class="gold-rule gold-rule--center"></div>
+        <h2>One Team. Every Trade.</h2>
+        <p>
+          Complete facilities management under one roof. We cover every
+          discipline so you don't have to manage multiple contractors.
         </p>
       </div>
-      <a
-        href="/contact"
-        class="inline-flex items-center rounded-md bg-white px-5 py-3 text-brand-900 font-medium hover:bg-brand-50 transition"
-        >Talk to us</a
-      >
+
+      <div class="services__grid">
+        <!-- SOFT FM -->
+        <div class="service-card reveal">
+          <div class="service-card__head">
+            <div class="service-card__icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            </div>
+            <h3>Soft FM</h3>
+          </div>
+          <div class="service-card__body">
+            <p>
+              The services that keep your building clean, secure, and
+              presentable. We handle the day-to-day so your team can focus on
+              what matters.
+            </p>
+            <a href="#contact" class="service-card__link">Commercial Cleaning</a>
+            <a href="#contact" class="service-card__link">Window Cleaning</a>
+            <a href="#contact" class="service-card__link">Washroom Services</a>
+            <a href="#contact" class="service-card__link">Security Services</a>
+            <a href="#contact" class="service-card__link">Waste Management</a>
+          </div>
+        </div>
+
+        <!-- HARD FM -->
+        <div class="service-card reveal">
+          <div class="service-card__head">
+            <div class="service-card__icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <h3>Hard FM</h3>
+          </div>
+          <div class="service-card__body">
+            <p>
+              The mechanical, electrical, and structural backbone of your
+              property. Planned or reactive, we keep your building safe,
+              compliant, and operational.
+            </p>
+            <a href="#contact" class="service-card__link">Reactive Maintenance</a>
+            <a href="#contact" class="service-card__link">Planned Maintenance</a>
+            <a href="#contact" class="service-card__link">Mechanical &amp; Electrical</a>
+            <a href="#contact" class="service-card__link">Fire Safety &amp; Security</a>
+            <a href="#contact" class="service-card__link">Air Conditioning</a>
+            <a href="#contact" class="service-card__link">Structural Steel Work</a>
+            <a href="#contact" class="service-card__link">Rope Access</a>
+          </div>
+        </div>
+
+        <!-- RENOVATIONS -->
+        <div class="service-card reveal">
+          <div class="service-card__head">
+            <div class="service-card__icon">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/><path d="M17 12h.01"/><path d="M7 12h.01"/></svg>
+            </div>
+            <h3>Renovations</h3>
+          </div>
+          <div class="service-card__body">
+            <p>
+              From commercial fit-outs to domestic refurbishments, we manage
+              every stage of the project. Design, planning, build, and
+              handover — all under one team.
+            </p>
+            <a href="#contact" class="service-card__link">Commercial Renovations</a>
+            <a href="#contact" class="service-card__link">Domestic Refurbishments</a>
+            <a href="#contact" class="service-card__link">Structural Alterations</a>
+            <a href="#contact" class="service-card__link">Layout Reconfiguration</a>
+            <a href="#contact" class="service-card__link">Interior Upgrades</a>
+            <a href="#contact" class="service-card__link">Listed Building Works</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TAGLINE BANNER ====== -->
+  <section class="tagline">
+    <div class="container">
+      <h2>One Team. Every Trade.<br /><em>Zero Stress.</em></h2>
+      <div class="tagline__badges">
+        <div class="tagline__badge">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Rapid Response
+        </div>
+        <div class="tagline__badge">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Fully Insured
+        </div>
+        <div class="tagline__badge">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Quality Guaranteed
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CLIENTS ====== -->
+  <section class="clients">
+    <div class="container">
+      <p class="section-label">Trusted By</p>
+      <div class="clients__row">
+        <span class="clients__name">Barratt Homes</span>
+        <span class="clients__name">Redrow</span>
+        <span class="clients__name">Bellway</span>
+        <span class="clients__name">Persimmon</span>
+        <span class="clients__name">Wates</span>
+        <span class="clients__name">Vinci</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== TESTIMONIAL ====== -->
+  <section class="testimonial">
+    <div class="container">
+      <div class="testimonial__card reveal">
+        <p class="section-label">Client Feedback</p>
+        <div class="gold-rule gold-rule--center"></div>
+        <p class="testimonial__quote">
+          Crown FM have been instrumental in keeping our sites running
+          smoothly. Reliable, professional and responsive.
+        </p>
+        <p class="testimonial__name">Operations Manager</p>
+        <p class="testimonial__role">National Housebuilder</p>
+        <div class="testimonial__stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== ACCREDITATIONS ====== -->
+  <section class="accreditations">
+    <div class="container">
+      <div class="accred">
+        <div class="accred__circle">CHAS<br />Standard</div>
+        <span class="accred__label">CHAS Accredited</span>
+      </div>
+      <div class="accred">
+        <div class="accred__circle">Safe<br />Contractor</div>
+        <span class="accred__label">Approved</span>
+      </div>
+      <div class="accred">
+        <div class="accred__circle">Construction<br />line</div>
+        <span class="accred__label">Gold Member</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONTACT ====== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact__grid">
+        <div class="reveal">
+          <p class="section-label">Contact</p>
+          <div class="gold-rule"></div>
+          <h2>Let's Talk</h2>
+          <p>
+            Whether you need a reactive call-out, a planned maintenance
+            contract, or a full renovation — get in touch and we'll come
+            back to you the same day.
+          </p>
+          <a href="tel:01276582081" class="contact__phone">01276 582 081</a>
+          <a href="mailto:info@crownfm.co.uk" class="contact__email">info@crownfm.co.uk</a>
+        </div>
+
+        <form
+          class="contact__form reveal"
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
+          <!-- Required so Netlify knows which form this is. -->
+          <input type="hidden" name="form-name" value="contact" />
+          <!-- Honeypot: real users leave this blank; bots fill it. Netlify silently drops those submissions. -->
+          <p class="bot-field">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+          </p>
+
+          <input type="text" name="name" placeholder="Name" required autocomplete="name" />
+          <input type="email" name="email" placeholder="Email" required autocomplete="email" />
+          <input type="tel" name="phone" placeholder="Phone" autocomplete="tel" />
+          <textarea name="message" placeholder="How can we help?" required></textarea>
+          <button type="submit" class="btn btn--gold">Send Enquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FAQ ====== -->
+  <section class="faq" id="news">
+    <div class="container">
+      <div class="faq__header">
+        <p class="section-label">FAQ</p>
+        <div class="gold-rule gold-rule--center"></div>
+        <h2>Common Questions</h2>
+      </div>
+
+      <div class="faq__item open">
+        <div class="faq__q" onclick="toggleFaq(this)">
+          <span>What does Crown FM cover under facilities management?</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            Crown FM provides both Hard FM and Soft FM services. That
+            includes everything from electrical testing, HVAC, plumbing, and
+            fire safety through to commercial cleaning, security, washroom
+            services, and waste management. We also handle planned
+            preventative maintenance programmes and emergency reactive
+            call-outs to keep your property compliant and fully operational.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <div class="faq__q" onclick="toggleFaq(this)">
+          <span>How quickly can you respond to an emergency?</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            We operate a rapid response service for emergency call-outs. Our
+            24/7 service line handles urgent issues like leaks, electrical
+            faults, or security breaches. Our reactive maintenance team
+            covers London and the Southeast and is trained to minimise
+            downtime and disruption to your operations.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <div class="faq__q" onclick="toggleFaq(this)">
+          <span>Do you handle both commercial and domestic renovations?</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            Yes. Crown FM manages renovations and refurbishments for both
+            commercial and residential properties. From office fit-outs and
+            retail space reconfiguration to domestic kitchen and bathroom
+            refurbishments, we oversee the full lifecycle: design, planning,
+            construction, and handover. Every project is managed in-house
+            with no subcontractor chains.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <div class="faq__q" onclick="toggleFaq(this)">
+          <span>What types of property do you work with?</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            We work across commercial offices, hotels, residential
+            developments, retail units, healthcare sites, schools, and
+            industrial premises. Whether you manage a single building or a
+            multi-site portfolio, Crown FM delivers a consistent, reliable
+            standard tailored to your property's needs.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <div class="faq__q" onclick="toggleFaq(this)">
+          <span>What makes Crown FM different?</span>
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="faq__a">
+          <div class="faq__a-inner">
+            We are a genuine single-source provider. One team covers every
+            trade, so you deal with one company, one point of contact, and
+            one standard of work across your entire property. Our leadership
+            team brings over 20 years of construction industry experience,
+            and we are fully accredited with CHAS, SafeContractor, and
+            Constructionline Gold. We don't just maintain buildings. We
+            build partnerships.
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>

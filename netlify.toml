@@ -1,4 +1,4 @@
-# Netlify build configuration.
+# Netlify build + redirects.
 # Keeps build settings in source control so we don't depend on the dashboard.
 
 [build]
@@ -7,3 +7,24 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+# The site is now a single-page experience; the old multi-page URLs
+# redirect to their corresponding anchor on the homepage. `force = true`
+# means these fire even if a stub file exists at the old path.
+[[redirects]]
+  from = "/services"
+  to = "/#services"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about"
+  to = "/#about"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact"
+  to = "/#contact"
+  status = 301
+  force = true

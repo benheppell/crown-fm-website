@@ -1,140 +1,19 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-
-const services = [
-  {
-    id: "planned",
-    title: "Planned preventive maintenance",
-    summary:
-      "Scheduled servicing of the assets that keep your building running. We build an asset register, set frequencies that meet manufacturer and statutory requirements, and turn up when we said we would.",
-    items: [
-      "HVAC servicing — chillers, AHUs, FCUs, split systems, VRV/VRF",
-      "Electrical maintenance — distribution boards, emergency lighting, PAT",
-      "Plumbing and drainage — tap and cistern servicing, drain clearance",
-      "Building fabric — doors, locks, windows, roofs, paintwork",
-      "BMS checks and minor reprogramming",
-    ],
-  },
-  {
-    id: "reactive",
-    title: "Reactive callouts",
-    summary:
-      "One number, picked up by a person, 24 hours a day. We agree response and fix SLAs upfront, dispatch a directly-employed engineer, and close the job with photos and a report.",
-    items: [
-      "P1 emergencies attended within agreed SLA (typically 2–4 hours)",
-      "Heating, hot water, cooling and ventilation failures",
-      "Electrical faults and lighting failures",
-      "Leaks, blocked drains and washroom issues",
-      "Lock-outs, broken glass, secure-the-building works",
-    ],
-  },
-  {
-    id: "compliance",
-    title: "Statutory compliance",
-    summary:
-      "The testing and certification you need to demonstrate duty of care — scheduled against your assets, logged centrally, and produced on demand for audits and insurers.",
-    items: [
-      "Gas safety inspections (CP12 / CP15)",
-      "Fixed wiring testing (EICR) and PAT",
-      "Fire alarm, emergency lighting and extinguisher servicing",
-      "Water hygiene — L8 risk assessments, monthly temperature checks, tank cleans",
-      "Lifting equipment (LOLER) and pressure systems (PSSR) coordination",
-      "Asbestos register management and re-inspection",
-    ],
-  },
-  {
-    id: "projects",
-    title: "Small works &amp; fit-out",
-    summary:
-      "When something needs more than a callout — office reconfigurations, dilapidations, end-of-lease reinstatements — we project-manage it under the same contract and the same point of contact.",
-    items: [
-      "Partitioning, ceilings and flooring",
-      "Power, data and lighting alterations",
-      "Decorating and dilapidations make-good",
-      "Washroom and kitchen refurbishment",
-      "CDM coordination for notifiable works",
-    ],
-  },
-];
+// Obsolete page kept only as a safety net. Netlify rewrites /services → /#services
+// via netlify.toml. If for any reason that rewrite doesn't fire, the meta refresh
+// below bounces the visitor over. This file can be deleted once we're confident
+// the redirect is reliable.
 ---
 
-<BaseLayout
-  title="Services — Crown FM"
-  description="Crown FM facilities management services: planned maintenance, reactive callouts, statutory compliance and small works."
->
-  <section class="mx-auto max-w-6xl px-4 py-16 sm:py-20">
-    <p class="text-sm font-semibold tracking-wide uppercase text-brand-700">
-      Services
-    </p>
-    <h1 class="mt-3 text-4xl sm:text-5xl font-bold tracking-tight text-brand-900 max-w-3xl">
-      A single FM contract that actually covers everything.
-    </h1>
-    <p class="mt-6 max-w-2xl text-lg text-slate-600">
-      We deliver hard and soft FM under one contract, with directly-employed
-      engineers and a transparent schedule of works. Pick the bits you need or
-      take the full TFM package.
-    </p>
-
-    <nav aria-label="Service quick links" class="mt-10 flex flex-wrap gap-2 text-sm">
-      {services.map((s) => (
-        <a
-          href={`#${s.id}`}
-          class="inline-flex items-center rounded-full border border-slate-300 px-4 py-1.5 hover:border-brand-500 hover:text-brand-700 transition"
-          >{s.title.replace("&amp;", "&")}</a
-        >
-      ))}
-    </nav>
-  </section>
-
-  <section class="border-t border-slate-200 bg-brand-50">
-    <div class="mx-auto max-w-6xl px-4 py-16 space-y-16">
-      {services.map((s) => (
-        <article id={s.id} class="grid md:grid-cols-3 gap-8 scroll-mt-24">
-          <header class="md:col-span-1">
-            <h2 class="text-2xl font-bold text-brand-900" set:html={s.title} />
-            <p class="mt-3 text-slate-600 leading-relaxed">{s.summary}</p>
-          </header>
-          <ul class="md:col-span-2 grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm text-slate-700 self-start">
-            {s.items.map((item) => (
-              <li class="flex gap-2">
-                <span aria-hidden="true" class="text-brand-500 mt-0.5">▸</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="border-t border-slate-200">
-    <div class="mx-auto max-w-6xl px-4 py-16 grid md:grid-cols-2 gap-10 items-start">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-brand-900">
-          How we price
-        </h2>
-        <p class="mt-4 text-slate-600 leading-relaxed">
-          Most clients run on a fixed monthly PPM fee, with reactive works
-          billed against a pre-agreed rate card and uplift schedule. Larger
-          projects are quoted separately. No hidden mark-ups on parts — you
-          see the supplier invoice.
-        </p>
-      </div>
-      <div class="bg-brand-50 border border-brand-100 rounded-lg p-6">
-        <h3 class="font-semibold text-brand-900">What you'll get in a proposal</h3>
-        <ul class="mt-4 space-y-2 text-sm text-slate-700">
-          <li>An asset register based on a free site survey</li>
-          <li>A 12-month PPM schedule with statutory frequencies</li>
-          <li>Response and fix SLAs in writing</li>
-          <li>Transparent rate card for reactive works</li>
-          <li>Named account manager and out-of-hours contact</li>
-        </ul>
-        <a
-          href="/contact"
-          class="mt-6 inline-flex items-center rounded-md bg-brand-700 px-5 py-3 text-white font-medium hover:bg-brand-900 transition"
-          >Request a proposal</a
-        >
-      </div>
-    </div>
-  </section>
-</BaseLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; url=/#services" />
+    <link rel="canonical" href="/#services" />
+    <title>Crown FM — Services</title>
+  </head>
+  <body>
+    <p>Redirecting to <a href="/#services">our services</a>…</p>
+  </body>
+</html>
