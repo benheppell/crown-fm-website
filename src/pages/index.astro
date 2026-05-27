@@ -9,8 +9,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <!-- ====== HERO ====== -->
   <section class="hero">
     <div class="hero__video">
-      {/* Replace placeholder with: <video autoplay muted loop playsinline src="/images/shard-video.mp4"></video> */}
-      <div class="hero__video--placeholder"></div>
+      <video autoplay muted loop playsinline preload="metadata" poster="/images/shard-video-poster.jpg">
+        <source src="/images/shard-video.mp4" type="video/mp4" />
+      </video>
     </div>
     <div class="hero__overlay"></div>
     <div class="container">

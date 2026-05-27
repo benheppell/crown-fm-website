@@ -164,6 +164,16 @@ h1, h2, h3 {
 /* Logo */
 .logo { display: flex; align-items: center; gap: 14px; }
 
+/* Header logo — uses the real PNG lockup (crown + CROWN + strapline). */
+.logo__image {
+  height: 62px;
+  width: auto;
+  display: block;
+}
+
+/* Footer still uses the legacy text-based treatment (the PNG's black
+   strapline would be invisible on the dark footer). The styles below
+   are kept for that. */
 .logo__icon {
   font-size: 30px;
   color: var(--gold);
@@ -988,4 +998,98 @@ h1, h2, h3 {
   .clients__name { font-size: 16px; }
   .footer__grid { grid-template-columns: 1fr; }
   .testimonial__quote { font-size: 24px; }
+}
+
+/* ============================================================
+   MOBILE POLISH — second-pass fixes for things the base
+   responsive rules didn't fully cover. Order matters: keep these
+   AFTER the original 640px block so the more specific values win.
+   ============================================================ */
+
+/* Container padding is generous on small phones — tighten it. */
+@media (max-width: 640px) {
+  .container { padding: 0 18px; }
+}
+
+/* Topbar: three links don't fit on phones. Centre what's left and
+   hide the website URL (least useful on mobile — they're already
+   on the site). */
+@media (max-width: 640px) {
+  .topbar { padding: 7px 0; }
+  .topbar .container {
+    justify-content: center;
+    gap: 14px;
+    font-size: 11px;
+  }
+  .topbar .container a:nth-child(3) { display: none; }
+}
+
+/* Logo: shrink the wordmark so it doesn't crowd the burger menu.
+   The .logo__image rule applies to the header PNG; the rest are
+   only relevant to the footer's legacy text-based treatment. */
+@media (max-width: 640px) {
+  .logo { gap: 10px; }
+  .logo__image { height: 46px; }
+  .logo__icon { font-size: 24px; }
+  .logo__text { font-size: 22px; letter-spacing: 4px; }
+  .logo__sub { font-size: 7px; letter-spacing: 4px; }
+}
+
+@media (max-width: 380px) {
+  .logo__image { height: 40px; }
+}
+
+/* Hero badges: smaller icons, tighter type so four badges fit
+   cleanly into two rows of two on a 360px phone. */
+@media (max-width: 640px) {
+  .hero__badges { gap: 14px 20px; margin-top: 36px; padding-top: 22px; }
+  .hero__badge-icon { width: 36px; height: 36px; }
+  .hero__badge span { font-size: 9px; letter-spacing: 2px; }
+}
+
+/* The tagline banner didn't get a 640px override — its 50px h2 was
+   running off the side of small screens. */
+@media (max-width: 640px) {
+  .tagline { padding: 60px 0; }
+  .tagline h2 { font-size: 28px; letter-spacing: 2px; }
+}
+
+/* Section vertical rhythm: 110px is heavy for phones. Pull all of
+   the big content sections in line. */
+@media (max-width: 640px) {
+  .about,
+  .services,
+  .contact,
+  .faq { padding: 70px 0; }
+  .testimonial { padding: 70px 0; }
+}
+
+/* About image: keep proportions but stop it dominating the page. */
+@media (max-width: 640px) {
+  .about__image { height: 240px; }
+  .about__image-placeholder { font-size: 60px; }
+}
+
+/* Accreditations: tighter spacing on phones. */
+@media (max-width: 640px) {
+  .accreditations .container { gap: 30px; }
+  .accred__circle { width: 64px; height: 64px; }
+}
+
+/* Mobile nav: the "Get In Touch" CTA inherits desktop margins that
+   look odd when the menu is vertical — reset them. */
+@media (max-width: 1024px) {
+  .nav.open .nav__cta {
+    margin-left: 0 !important;
+    margin-top: 10px !important;
+    align-self: flex-start;
+  }
+}
+
+/* Very small phones (iPhone SE / 360px-wide Androids): the 36px
+   hero headline is still cramped. Pull it down further. */
+@media (max-width: 380px) {
+  .hero h1 { font-size: 30px; letter-spacing: 2px; }
+  .hero__intro { font-size: 14px; }
+  .hero__btns .btn { padding: 13px 22px; font-size: 11px; letter-spacing: 1.5px; }
 }
