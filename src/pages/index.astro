@@ -9,7 +9,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <!-- ====== HERO ====== -->
   <section class="hero">
     <div class="hero__video">
-      <video autoplay muted loop playsinline preload="metadata" poster="/images/shard-video-poster.jpg">
+      <video autoplay muted loop playsinline preload="auto">
         <source src="/images/shard-video.mp4" type="video/mp4" />
       </video>
     </div>
@@ -252,17 +252,22 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <!-- ====== ACCREDITATIONS ====== -->
   <section class="accreditations">
     <div class="container">
-      <div class="accred">
-        <div class="accred__circle">CHAS<br />Standard</div>
-        <span class="accred__label">CHAS Accredited</span>
+      <div class="accreditations__header">
+        <p class="section-label">Accreditations &amp; Memberships</p>
+        <div class="gold-rule gold-rule--center"></div>
       </div>
-      <div class="accred">
-        <div class="accred__circle">Safe<br />Contractor</div>
-        <span class="accred__label">Approved</span>
-      </div>
-      <div class="accred">
-        <div class="accred__circle">Construction<br />line</div>
-        <span class="accred__label">Gold Member</span>
+      <div class="accreditations__row">
+        <div class="accred"><img src="/images/accreditations/chas.jpeg" alt="CHAS" loading="lazy" /></div>
+        <div class="accred"><img src="/images/accreditations/safe-contractor.jpeg" alt="SafeContractor" loading="lazy" /></div>
+        <div class="accred"><img src="/images/accreditations/constructionline.jpeg" alt="Constructionline" loading="lazy" /></div>
+        <div class="accred"><img src="/images/accreditations/niceic.jpeg" alt="NICEIC" loading="lazy" /></div>
+        <div class="accred"><img src="/images/accreditations/ipaf.jpeg" alt="IPAF" loading="lazy" /></div>
+        <div class="accred"><img src="/images/accreditations/pasma.jpeg" alt="PASMA" loading="lazy" /></div>
+        <div class="accred"><img src="/images/accreditations/ciphe.jpeg" alt="CIPHE" loading="lazy" /></div>
+        <div class="accred"><img src="/images/accreditations/ssip.jpeg" alt="SSIP" loading="lazy" /></div>
+        <div class="accred"><img src="/images/accreditations/acclaim.jpeg" alt="Acclaim" loading="lazy" /></div>
+        <div class="accred"><img src="/images/accreditations/safelife.jpeg" alt="Safelife" loading="lazy" /></div>
+        <div class="accred"><img src="/images/accreditations/watersafe.jpeg" alt="WaterSafe" loading="lazy" /></div>
       </div>
     </div>
   </section>

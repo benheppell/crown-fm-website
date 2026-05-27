@@ -284,7 +284,6 @@ h1, h2, h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.3;
 }
 
 .hero__video--placeholder {
@@ -688,55 +687,49 @@ h1, h2, h3 {
 
 /* ============================================================
    ACCREDITATIONS (white section)
+   Real logo row with greyscale-by-default, colour-on-hover so a
+   visually-chaotic mix of brand marks reads as one tidy strip.
    ============================================================ */
 .accreditations {
-  padding: 50px 0;
+  padding: 64px 0;
   background: var(--white);
   border-top: 1px solid var(--border);
 }
 
-.accreditations .container {
+.accreditations__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.accreditations__row {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 60px;
+  gap: 36px 48px;
   flex-wrap: wrap;
 }
 
 .accred {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  opacity: 0.65;
-  transition: all 0.35s var(--ease);
-}
-
-.accred:hover { opacity: 1; }
-
-.accred__circle {
-  width: 78px;
-  height: 78px;
-  border: 2px solid var(--gold);
-  border-radius: 50%;
-  display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  color: var(--gold);
-  line-height: 1.3;
-  padding: 10px;
+  height: 60px;
+  filter: grayscale(100%);
+  opacity: 0.55;
+  transition: filter 0.35s var(--ease), opacity 0.35s var(--ease);
 }
 
-.accred__label {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--text-light);
+.accred:hover {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+.accred img {
+  max-height: 100%;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
 }
 
 /* ============================================================
@@ -1070,10 +1063,12 @@ h1, h2, h3 {
   .about__image-placeholder { font-size: 60px; }
 }
 
-/* Accreditations: tighter spacing on phones. */
+/* Accreditations: tighter spacing and smaller logos on phones. */
 @media (max-width: 640px) {
-  .accreditations .container { gap: 30px; }
-  .accred__circle { width: 64px; height: 64px; }
+  .accreditations { padding: 48px 0; }
+  .accreditations__row { gap: 24px 32px; }
+  .accred { height: 44px; }
+  .accred img { max-width: 100px; }
 }
 
 /* Mobile nav: the "Get In Touch" CTA inherits desktop margins that
