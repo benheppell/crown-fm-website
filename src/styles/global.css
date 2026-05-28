@@ -846,7 +846,8 @@ textarea:focus-visible {
 .clients__name:hover { color: var(--gold); }
 
 /* ============================================================
-   COVERAGE (dark section — London / Hampshire / & Surrey)
+   COVERAGE (dark section, "Areas we cover")
+   Two-column on desktop: text left, gold-and-black map right.
    ============================================================ */
 .coverage {
   background: var(--black);
@@ -854,18 +855,23 @@ textarea:focus-visible {
   color: var(--ink);
 }
 
-.coverage__inner {
-  max-width: 720px;
+.coverage__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 72px;
+  align-items: center;
 }
+
+.coverage__copy { max-width: 480px; }
 
 .coverage h2 {
   font-family: 'Inter', sans-serif;
-  font-size: 68px;
+  font-size: 64px;
   font-weight: 700;
   line-height: 0.96;
   letter-spacing: -0.04em;
   color: var(--ink);
-  margin: 0 0 32px;
+  margin: 0 0 28px;
   text-transform: none;
 }
 
@@ -880,24 +886,39 @@ textarea:focus-visible {
   font-weight: 400;
   color: var(--text-white-muted);
   line-height: 1.6;
-  max-width: 520px;
   margin: 0;
   letter-spacing: -0.005em;
 }
 
+.coverage .section-label {
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.coverage__map img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Subtle gold edge so the map reads as an intentional asset. */
+  border: 1px solid var(--border-dark);
+}
+
 @media (max-width: 1024px) {
-  .coverage { padding: 90px 0; }
-  .coverage h2 { font-size: 56px; }
+  .coverage { padding: 80px 0; }
+  .coverage__grid { grid-template-columns: 1fr; gap: 40px; }
+  .coverage__copy { max-width: none; }
+  .coverage h2 { font-size: 52px; }
+  .coverage__map { max-width: 640px; margin: 0 auto; }
 }
 
 @media (max-width: 640px) {
   .coverage { padding: 64px 0; }
-  .coverage h2 { font-size: 44px; margin-bottom: 24px; }
+  .coverage h2 { font-size: 40px; margin-bottom: 20px; }
   .coverage p { font-size: 16px; }
 }
 
 @media (max-width: 380px) {
-  .coverage h2 { font-size: 38px; }
+  .coverage h2 { font-size: 34px; }
 }
 
 /* ============================================================
