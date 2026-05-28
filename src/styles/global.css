@@ -460,12 +460,9 @@ textarea:focus-visible {
 .hero__badges {
   display: flex;
   gap: 36px;
-  margin-top: 55px;
-  margin-bottom: 32px;
-  padding-top: 28px;
-  padding-bottom: 32px;
-  border-top: 1px solid rgba(255,255,255,0.10);
-  border-bottom: 1px solid rgba(255,255,255,0.10);
+  margin-top: 56px;
+  margin-bottom: 24px;
+  /* No top/bottom rule lines — clean whitespace separation. */
 }
 
 .hero__badge { text-align: center; }
@@ -1309,7 +1306,7 @@ textarea:focus-visible {
 /* Hero badges: smaller icons, tighter type so four badges fit
    cleanly into two rows of two on a 360px phone. */
 @media (max-width: 640px) {
-  .hero__badges { gap: 14px 20px; margin-top: 36px; padding-top: 22px; }
+  .hero__badges { gap: 14px 20px; margin-top: 40px; margin-bottom: 20px; }
   .hero__badge-icon { width: 36px; height: 36px; }
   .hero__badge span { font-size: 10px; letter-spacing: 2px; }
 }
