@@ -57,13 +57,7 @@ const canonical = new URL(pathname, Astro.site ?? "https://www.crown-fm.co.uk").
     <header class="header">
       <div class="container">
         <a href="/" class="logo" aria-label="Crown Facilities Management — home">
-          <img
-            src="/images/crown-logo.png"
-            alt="Crown Facilities Management"
-            class="logo__image"
-            width="1110"
-            height="764"
-          />
+          <span class="logo__image" aria-hidden="true"></span>
         </a>
 
         <ul class="nav" id="mainNav">

@@ -65,10 +65,22 @@ h1, h2, h3 {
   font-family: 'Outfit', sans-serif;
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 6px;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 12px;
+}
+
+/* Keyboard accessibility — visible gold focus ring on links, buttons,
+   and form fields when navigating via Tab. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 .gold-rule {
@@ -164,12 +176,21 @@ h1, h2, h3 {
 /* Logo */
 .logo { display: flex; align-items: center; gap: 14px; }
 
-/* Header logo — uses the real PNG lockup (crown + CROWN + strapline). */
+/* Header logo — the PNG is a black silhouette that we recolour to the
+   brand gold via CSS mask. To change the displayed colour for ever,
+   tweak --logo-colour (or just point background-color at a different
+   variable). No need to re-export the PNG. */
 .logo__image {
-  height: 62px;
-  width: auto;
   display: block;
+  height: 62px;
+  aspect-ratio: 1110 / 764;
+  background-color: var(--gold);
+  -webkit-mask: url('/images/crown-logo.png') no-repeat center / contain;
+          mask: url('/images/crown-logo.png') no-repeat center / contain;
+  transition: background-color 0.35s var(--ease);
 }
+
+.logo:hover .logo__image { background-color: var(--gold-light); }
 
 /* Footer still uses the legacy text-based treatment (the PNG's black
    strapline would be invisible on the dark footer). The styles below
@@ -312,11 +333,11 @@ h1, h2, h3 {
 .hero .section-label { color: var(--gold-light); letter-spacing: 8px; font-size: 11px; margin-bottom: 18px; }
 
 .hero h1 {
-  font-size: 62px;
+  font-size: 56px;
   font-weight: 800;
   color: var(--white);
   margin-bottom: 22px;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
@@ -328,7 +349,7 @@ h1, h2, h3 {
   color: var(--text-white-muted);
   max-width: 540px;
   margin-bottom: 40px;
-  line-height: 1.9;
+  line-height: 1.75;
 }
 
 .hero__btns { display: flex; gap: 14px; flex-wrap: wrap; }
@@ -379,8 +400,9 @@ h1, h2, h3 {
 }
 
 .about h2 {
-  font-size: 46px;
+  font-size: 42px;
   margin-bottom: 24px;
+  letter-spacing: 1.5px;
 }
 
 .about h2 em { font-style: normal; color: var(--gold); }
@@ -388,7 +410,7 @@ h1, h2, h3 {
 .about p {
   font-size: 15px;
   color: var(--text-mid);
-  line-height: 1.9;
+  line-height: 1.8;
   font-weight: 300;
   margin-bottom: 14px;
 }
@@ -457,8 +479,8 @@ h1, h2, h3 {
   margin: 0 auto 60px;
 }
 
-.services__header h2 { font-size: 46px; margin-bottom: 14px; }
-.services__header p { font-size: 15px; color: var(--text-mid); font-weight: 300; }
+.services__header h2 { font-size: 42px; margin-bottom: 14px; letter-spacing: 1.5px; }
+.services__header p { font-size: 15px; color: var(--text-mid); font-weight: 300; line-height: 1.7; }
 
 .services__grid {
   display: grid;
@@ -502,14 +524,14 @@ h1, h2, h3 {
   color: var(--gold);
 }
 
-.service-card__head h3 { font-size: 26px; letter-spacing: 3px; }
+.service-card__head h3 { font-size: 22px; letter-spacing: 2.5px; }
 
 .service-card__body { padding: 20px 26px 28px; }
 
 .service-card__body > p {
   font-size: 13px;
   color: var(--text-mid);
-  line-height: 1.85;
+  line-height: 1.75;
   font-weight: 300;
   margin-bottom: 18px;
 }
@@ -560,12 +582,12 @@ h1, h2, h3 {
 }
 
 .tagline h2 {
-  font-size: 50px;
+  font-size: 44px;
   font-weight: 800;
   color: var(--white);
   position: relative;
   z-index: 1;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
@@ -641,13 +663,14 @@ h1, h2, h3 {
 
 .testimonial__quote {
   font-family: 'Cinzel', serif;
-  font-size: 30px;
+  font-size: 26px;
   font-weight: 500;
   font-style: italic;
   color: var(--white);
-  line-height: 1.6;
+  line-height: 1.55;
   margin-bottom: 28px;
   position: relative;
+  letter-spacing: 0.5px;
 }
 
 .testimonial__quote::before {
@@ -748,12 +771,12 @@ h1, h2, h3 {
   align-items: start;
 }
 
-.contact h2 { font-size: 46px; margin-bottom: 20px; }
+.contact h2 { font-size: 42px; margin-bottom: 20px; letter-spacing: 1.5px; }
 
 .contact p {
   font-size: 15px;
   color: var(--text-mid);
-  line-height: 1.9;
+  line-height: 1.8;
   font-weight: 300;
   margin-bottom: 28px;
 }
@@ -763,9 +786,10 @@ h1, h2, h3 {
   align-items: center;
   gap: 12px;
   font-family: 'Cinzel', serif;
-  font-size: 34px;
+  font-size: 30px;
   font-weight: 700;
   color: var(--gold);
+  letter-spacing: 1px;
 }
 
 .contact__phone:hover { color: var(--gold-dark); }
@@ -884,7 +908,7 @@ h1, h2, h3 {
   margin: 0 auto 50px;
 }
 
-.faq__header h2 { font-size: 42px; }
+.faq__header h2 { font-size: 38px; letter-spacing: 1.5px; }
 
 .faq__item {
   border: 1px solid var(--border);
@@ -1005,13 +1029,16 @@ h1, h2, h3 {
   .nav { display: none; }
   .mobile-toggle { display: flex; }
   .hero .container { margin-left: auto; }
-  .hero h1 { font-size: 44px; }
+  .hero h1 { font-size: 42px; letter-spacing: 2.5px; }
   .about__grid { grid-template-columns: 1fr; gap: 40px; }
   .about__image { height: 360px; }
+  .about h2,
+  .services__header h2,
+  .contact h2 { font-size: 36px; }
   .services__grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
   .contact__grid { grid-template-columns: 1fr; gap: 50px; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
-  .tagline h2 { font-size: 38px; }
+  .tagline h2 { font-size: 34px; }
 
   .nav.open {
     display: flex;
@@ -1044,9 +1071,9 @@ h1, h2, h3 {
 
 @media (max-width: 640px) {
   .hero { min-height: 72vh; }
-  .hero h1 { font-size: 36px; }
+  .hero h1 { font-size: 34px; letter-spacing: 2px; }
   .hero__badges { gap: 18px; flex-wrap: wrap; }
-  .about h2, .services__header h2, .contact h2 { font-size: 34px; }
+  .about h2, .services__header h2, .contact h2 { font-size: 30px; letter-spacing: 1.2px; }
   .about__stats { grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .about__stat { padding: 16px 8px; }
   .about__stat-num { font-size: 32px; }
@@ -1054,7 +1081,9 @@ h1, h2, h3 {
   .clients__row { gap: 20px; }
   .clients__name { font-size: 16px; }
   .footer__grid { grid-template-columns: 1fr; }
-  .testimonial__quote { font-size: 24px; }
+  .testimonial__quote { font-size: 22px; letter-spacing: 0.3px; }
+  .faq__header h2 { font-size: 28px; }
+  .contact__phone { font-size: 24px; }
 }
 
 /* ============================================================
@@ -1145,10 +1174,14 @@ h1, h2, h3 {
   }
 }
 
-/* Very small phones (iPhone SE / 360px-wide Androids): the 36px
-   hero headline is still cramped. Pull it down further. */
+/* Very small phones (iPhone SE / 360px-wide Androids). */
 @media (max-width: 380px) {
-  .hero h1 { font-size: 30px; letter-spacing: 2px; }
+  .hero h1 { font-size: 28px; letter-spacing: 1.5px; }
   .hero__intro { font-size: 14px; }
   .hero__btns .btn { padding: 13px 22px; font-size: 11px; letter-spacing: 1.5px; }
+  .about h2,
+  .services__header h2,
+  .contact h2 { font-size: 26px; }
+  .tagline h2 { font-size: 24px; letter-spacing: 1.5px; }
+  .section-label { letter-spacing: 3px; }
 }
