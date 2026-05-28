@@ -121,7 +121,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
       <div class="services__grid">
         <!-- SOFT FM -->
-        <div class="service-card reveal">
+        <article class="service-card reveal">
+          <div class="service-card__image">
+            <img src="/images/soft-fm.jpg" alt="Polished commercial lobby interior" loading="lazy" />
+          </div>
           <div class="service-card__head">
             <div class="service-card__icon">
               <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
@@ -131,19 +134,26 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="service-card__body">
             <p>
               The services that keep your building clean, secure, and
-              presentable. We handle the day-to-day so your team can focus on
-              what matters.
+              presentable. We handle the day-to-day operations so your team
+              can focus on running the business. Every service is delivered
+              by our own trained staff — no agency workers, no subcontractor
+              lottery.
             </p>
-            <a href="#contact" class="service-card__link">Commercial Cleaning</a>
-            <a href="#contact" class="service-card__link">Window Cleaning</a>
-            <a href="#contact" class="service-card__link">Washroom Services</a>
-            <a href="#contact" class="service-card__link">Security Services</a>
-            <a href="#contact" class="service-card__link">Waste Management</a>
+            <ul class="service-card__list">
+              <li><strong>Commercial Cleaning</strong> — Daily, weekly, or bespoke cleaning schedules for offices, communal areas, kitchens, and washrooms. Deep cleans available on request.</li>
+              <li><strong>Window Cleaning</strong> — Internal and external window cleaning for low-rise and high-rise buildings, including rope access and reach-and-wash systems.</li>
+              <li><strong>Washroom Services</strong> — Full washroom hygiene management including consumable supply, sanitiser units, feminine hygiene disposal, and air freshening systems.</li>
+              <li><strong>Security Services</strong> — Manned guarding, key holding, mobile patrols, alarm response, and CCTV monitoring. SIA licensed operatives throughout.</li>
+              <li><strong>Waste Management</strong> — General waste, recycling, confidential shredding, and specialist waste disposal. Duty of care documentation provided.</li>
+            </ul>
           </div>
-        </div>
+        </article>
 
         <!-- HARD FM -->
-        <div class="service-card reveal">
+        <article class="service-card reveal">
+          <div class="service-card__image">
+            <img src="/images/hard-fm.jpg" alt="Mechanical plant room interior" loading="lazy" />
+          </div>
           <div class="service-card__head">
             <div class="service-card__icon">
               <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
@@ -153,21 +163,28 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           <div class="service-card__body">
             <p>
               The mechanical, electrical, and structural backbone of your
-              property. Planned or reactive, we keep your building safe,
-              compliant, and operational.
+              property. Whether planned or reactive, we keep your building
+              safe, compliant, and fully operational. Our engineers are
+              multi-skilled and qualified to work across all core building
+              disciplines.
             </p>
-            <a href="#contact" class="service-card__link">Reactive Maintenance</a>
-            <a href="#contact" class="service-card__link">Planned Maintenance</a>
-            <a href="#contact" class="service-card__link">Mechanical &amp; Electrical</a>
-            <a href="#contact" class="service-card__link">Fire Safety &amp; Security</a>
-            <a href="#contact" class="service-card__link">Air Conditioning</a>
-            <a href="#contact" class="service-card__link">Structural Steel Work</a>
-            <a href="#contact" class="service-card__link">Rope Access</a>
+            <ul class="service-card__list">
+              <li><strong>Reactive Maintenance</strong> — 24/7 call-out service for emergency repairs. Leaks, electrical faults, lock failures, structural damage — we respond fast and fix it right.</li>
+              <li><strong>Planned Maintenance</strong> — Scheduled PPM programmes tailored to your building. We track every asset, manage compliance deadlines, and prevent failures before they happen.</li>
+              <li><strong>Mechanical &amp; Electrical</strong> — Installation, testing, and maintenance of HVAC systems, electrical distribution, emergency lighting, fire alarms, and power infrastructure.</li>
+              <li><strong>Fire Safety &amp; Security</strong> — Fire risk assessments, alarm servicing, extinguisher maintenance, emergency lighting testing, and fire door inspections. Fully compliant with Regulatory Reform Order 2005.</li>
+              <li><strong>Air Conditioning</strong> — Installation, servicing, and repair of split systems, VRF/VRV, chillers, and AHUs. F-Gas registered engineers. Planned service contracts available.</li>
+              <li><strong>Structural Steel Work</strong> — Fabrication, installation, and modification of structural steel elements. Mezzanine floors, support beams, fire escapes, and bespoke metalwork.</li>
+              <li><strong>Rope Access</strong> — IRATA-certified technicians for high-level maintenance, inspections, and cleaning. Safer and more cost-effective than scaffolding or cherry pickers.</li>
+            </ul>
           </div>
-        </div>
+        </article>
 
         <!-- RENOVATIONS -->
-        <div class="service-card reveal">
+        <article class="service-card reveal">
+          <div class="service-card__image">
+            <img src="/images/renovations.jpg" alt="Refurbished interior with curved archway" loading="lazy" />
+          </div>
           <div class="service-card__head">
             <div class="service-card__icon">
               <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/><path d="M17 12h.01"/><path d="M7 12h.01"/></svg>
@@ -178,16 +195,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <p>
               From commercial fit-outs to domestic refurbishments, we manage
               every stage of the project. Design, planning, build, and
-              handover — all under one team.
+              handover — all under one team. No project managers chasing
+              subcontractors. Just one company delivering start to finish.
             </p>
-            <a href="#contact" class="service-card__link">Commercial Renovations</a>
-            <a href="#contact" class="service-card__link">Domestic Refurbishments</a>
-            <a href="#contact" class="service-card__link">Structural Alterations</a>
-            <a href="#contact" class="service-card__link">Layout Reconfiguration</a>
-            <a href="#contact" class="service-card__link">Interior Upgrades</a>
-            <a href="#contact" class="service-card__link">Listed Building Works</a>
+            <ul class="service-card__list">
+              <li><strong>Commercial Renovations</strong> — Office refurbishments, retail fit-outs, hotel upgrades, restaurant builds. We work around your operating hours to minimise disruption.</li>
+              <li><strong>Domestic Refurbishments</strong> — Kitchens, bathrooms, extensions, loft conversions, and full property renovations. Managed end-to-end with a dedicated site team.</li>
+              <li><strong>Structural Alterations</strong> — Load-bearing wall removal, RSJ installation, floor strengthening, and foundation work. Fully engineered and building control compliant.</li>
+              <li><strong>Layout Reconfiguration</strong> — Partition walls, open-plan conversions, mezzanine installations, and space planning. We design for how your space actually gets used.</li>
+              <li><strong>Interior Upgrades</strong> — Flooring, decorating, joinery, lighting, ceilings, and finishes. We handle the detail work that makes the difference between functional and finished.</li>
+              <li><strong>Listed Building Works</strong> — Sensitive renovations to heritage and listed properties. We work with conservation officers and use appropriate materials and techniques throughout.</li>
+            </ul>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>
