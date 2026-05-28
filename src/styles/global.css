@@ -846,6 +846,61 @@ textarea:focus-visible {
 .clients__name:hover { color: var(--gold); }
 
 /* ============================================================
+   COVERAGE (dark section — London / Hampshire / & Surrey)
+   ============================================================ */
+.coverage {
+  background: var(--black);
+  padding: 110px 0;
+  color: var(--ink);
+}
+
+.coverage__inner {
+  max-width: 720px;
+}
+
+.coverage h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 68px;
+  font-weight: 700;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  margin: 0 0 32px;
+  text-transform: none;
+}
+
+.coverage h2 em {
+  font-style: normal;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.coverage p {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text-white-muted);
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0;
+  letter-spacing: -0.005em;
+}
+
+@media (max-width: 1024px) {
+  .coverage { padding: 90px 0; }
+  .coverage h2 { font-size: 56px; }
+}
+
+@media (max-width: 640px) {
+  .coverage { padding: 64px 0; }
+  .coverage h2 { font-size: 44px; margin-bottom: 24px; }
+  .coverage p { font-size: 16px; }
+}
+
+@media (max-width: 380px) {
+  .coverage h2 { font-size: 38px; }
+}
+
+/* ============================================================
    TESTIMONIAL (dark section)
    ============================================================ */
 .testimonial {
