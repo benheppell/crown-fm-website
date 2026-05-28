@@ -457,34 +457,51 @@ textarea:focus-visible {
 
 .hero__btns { display: flex; gap: 14px; flex-wrap: wrap; }
 
-.hero__badges {
-  display: flex;
-  gap: 36px;
-  margin-top: 56px;
-  margin-bottom: 24px;
-  /* No top/bottom rule lines — clean whitespace separation. */
+/* ============================================================
+   BADGE STRIP (Why Crown FM)
+   A short strip sitting directly under the hero on a warm-cream
+   background, so it reads as a proper distinct section — not a
+   continuation of the dark hero. 4-across desktop, 2x2 mobile.
+   ============================================================ */
+.badges {
+  background: var(--off-white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 48px 0;
 }
 
-.hero__badge { text-align: center; }
+.badges__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
 
-.hero__badge-icon {
-  width: 42px;
-  height: 42px;
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.badge__icon {
+  width: 52px;
+  height: 52px;
   border: 1px solid var(--gold);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 8px;
   color: var(--gold);
+  background: var(--white);
 }
 
-.hero__badge span {
-  font-size: 10px;
+.badge span {
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 2.5px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--text-white);
+  color: var(--text);
 }
 
 /* ============================================================
@@ -1290,7 +1307,6 @@ textarea:focus-visible {
   .hero { min-height: 72vh; }
   .hero h1 { font-size: 56px; letter-spacing: -0.04em; }
   .hero__intro { font-size: 16px; }
-  .hero__badges { gap: 18px; flex-wrap: wrap; }
   .about h2, .services__header h2, .contact h2 { font-size: 36px; letter-spacing: -0.035em; }
   .about__stats {
     grid-template-columns: repeat(3, 1fr);
@@ -1351,12 +1367,16 @@ textarea:focus-visible {
   .logo__image { height: 40px; }
 }
 
-/* Hero badges: smaller icons, tighter type so four badges fit
-   cleanly into two rows of two on a 360px phone. */
+/* Mobile: clean 2x2 grid (instead of 4-wide), tighter type and
+   smaller icons so they read well on phones. */
 @media (max-width: 640px) {
-  .hero__badges { gap: 14px 20px; margin-top: 40px; margin-bottom: 20px; }
-  .hero__badge-icon { width: 36px; height: 36px; }
-  .hero__badge span { font-size: 10px; letter-spacing: 2px; }
+  .badges { padding: 36px 0; }
+  .badges__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 24px;
+  }
+  .badge__icon { width: 46px; height: 46px; }
+  .badge span { font-size: 10px; letter-spacing: 0.18em; }
 }
 
 /* The tagline banner didn't get a 640px override — its 50px h2 was
