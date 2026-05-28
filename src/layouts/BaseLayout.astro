@@ -83,12 +83,8 @@ const canonical = new URL(pathname, Astro.site ?? "https://www.crown-fm.co.uk").
       <div class="container">
         <div class="footer__grid">
           <div class="footer__brand">
-            <a href="/" class="logo">
-              <span class="logo__icon" style="font-size:24px;">&#9818;</span>
-              <div>
-                <span class="logo__text" style="font-size:20px;">CROWN</span>
-                <span class="logo__sub">Facilities Management</span>
-              </div>
+            <a href="/" class="logo" aria-label="Crown Facilities Management — home">
+              <span class="logo__image footer__logo" aria-hidden="true"></span>
             </a>
             <p>Complete facilities management, construction, and renovation services. One team. Every trade. Built around standards.</p>
           </div>

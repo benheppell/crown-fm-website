@@ -461,8 +461,11 @@ textarea:focus-visible {
   display: flex;
   gap: 36px;
   margin-top: 55px;
+  margin-bottom: 32px;
   padding-top: 28px;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-bottom: 32px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+  border-bottom: 1px solid rgba(255,255,255,0.10);
 }
 
 .hero__badge { text-align: center; }
@@ -1114,7 +1117,20 @@ textarea:focus-visible {
   margin-bottom: 20px;
 }
 
-.footer__brand .logo__text { color: var(--white); }
+/* Footer logo — same mask-based PNG as the header, sized down. */
+.footer__logo {
+  height: 52px;
+  /* Inherits the gold background-color from .logo__image, so the
+     PNG silhouette renders gold against the dark footer background. */
+}
+
+@media (max-width: 640px) {
+  .footer__logo { height: 44px; }
+}
+
+/* Keep the old footer logo text styles for backwards-compat, though
+   they're now unused in markup. */
+.footer__brand .logo__text { color: var(--ink); }
 .footer__brand .logo__icon { color: var(--gold); }
 .footer__brand .logo__sub { color: var(--gold); }
 
