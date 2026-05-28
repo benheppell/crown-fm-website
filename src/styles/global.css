@@ -35,15 +35,22 @@
 
 /* --- RESET --- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Outfit', sans-serif;
   font-weight: 400;
+  font-size: 16px;
   color: var(--text);
   background: var(--white);
-  line-height: 1.7;
+  line-height: 1.6;
   overflow-x: hidden;
+  /* Optical typography: enable kerning, smooth font edges, render
+     ligatures and contextual alternates. */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
 }
 
 a { text-decoration: none; color: inherit; transition: all 0.35s var(--ease); }
@@ -57,7 +64,15 @@ h1, h2, h3 {
   color: var(--black);
   line-height: 1.15;
   letter-spacing: 2px;
+  /* Balance line breaks so headings don't end with a lonely word.
+     Supported in all modern browsers; gracefully ignored otherwise. */
+  text-wrap: balance;
 }
+
+/* Anchor scroll offset — keeps the section heading visible below the
+   sticky header instead of getting hidden under it. Tune if the
+   header height ever changes. */
+section[id] { scroll-margin-top: 110px; }
 
 .serif { font-family: 'Cinzel', 'Times New Roman', serif; }
 
@@ -408,11 +423,11 @@ textarea:focus-visible {
 .about h2 em { font-style: normal; color: var(--gold); }
 
 .about p {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--text-mid);
-  line-height: 1.8;
-  font-weight: 300;
-  margin-bottom: 14px;
+  line-height: 1.7;
+  font-weight: 400;
+  margin-bottom: 16px;
 }
 
 .about__stats {
@@ -436,6 +451,8 @@ textarea:focus-visible {
   color: var(--gold);
   line-height: 1;
   margin-bottom: 4px;
+  /* Equal-width numerals so the stat row stays visually rock-solid. */
+  font-variant-numeric: tabular-nums;
 }
 
 .about__stat span {
@@ -480,7 +497,7 @@ textarea:focus-visible {
 }
 
 .services__header h2 { font-size: 42px; margin-bottom: 14px; letter-spacing: 1.5px; }
-.services__header p { font-size: 15px; color: var(--text-mid); font-weight: 300; line-height: 1.7; }
+.services__header p { font-size: 16px; color: var(--text-mid); font-weight: 400; line-height: 1.65; }
 
 .services__grid {
   display: grid;
@@ -529,10 +546,10 @@ textarea:focus-visible {
 .service-card__body { padding: 20px 26px 28px; }
 
 .service-card__body > p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-mid);
-  line-height: 1.75;
-  font-weight: 300;
+  line-height: 1.65;
+  font-weight: 400;
   margin-bottom: 18px;
 }
 
@@ -774,10 +791,10 @@ textarea:focus-visible {
 .contact h2 { font-size: 42px; margin-bottom: 20px; letter-spacing: 1.5px; }
 
 .contact p {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--text-mid);
-  line-height: 1.8;
-  font-weight: 300;
+  line-height: 1.7;
+  font-weight: 400;
   margin-bottom: 28px;
 }
 
@@ -790,6 +807,7 @@ textarea:focus-visible {
   font-weight: 700;
   color: var(--gold);
   letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
 }
 
 .contact__phone:hover { color: var(--gold-dark); }
@@ -809,10 +827,11 @@ textarea:focus-visible {
 .contact__form input,
 .contact__form textarea {
   width: 100%;
-  padding: 15px 18px;
+  padding: 14px 18px;
   font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  font-weight: 300;
+  /* 16px prevents iOS Safari from auto-zooming on input focus. */
+  font-size: 16px;
+  font-weight: 400;
   border: 1px solid var(--border);
   background: var(--white);
   color: var(--text);
@@ -868,10 +887,10 @@ textarea:focus-visible {
 .thanks h1 em { font-style: normal; color: var(--gold); }
 
 .thanks__card p {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--text-mid);
-  line-height: 1.9;
-  font-weight: 300;
+  line-height: 1.7;
+  font-weight: 400;
   margin-bottom: 24px;
 }
 
@@ -939,10 +958,10 @@ textarea:focus-visible {
 
 .faq__a-inner {
   padding: 0 24px 22px;
-  font-size: 14px;
-  line-height: 1.9;
+  font-size: 15px;
+  line-height: 1.7;
   color: var(--text-mid);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 /* ============================================================
@@ -976,28 +995,28 @@ textarea:focus-visible {
 .footer__brand .logo__sub { color: var(--gold); }
 
 .footer__brand p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-white-muted);
-  line-height: 1.9;
-  font-weight: 300;
+  line-height: 1.7;
+  font-weight: 400;
   margin-top: 16px;
 }
 
 .footer__links a {
   display: block;
   padding: 5px 0;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-white-muted);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .footer__links a:hover { color: var(--gold); }
 
 .footer__contact p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-white-muted);
   margin-bottom: 8px;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .footer__contact a { color: var(--gold-light); }
@@ -1016,11 +1035,22 @@ textarea:focus-visible {
    ============================================================ */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(18px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
 }
 
 .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Respect users who prefer reduced motion — disable reveal animation
+   and scroll-smoothing for them. Required by WCAG 2.2.3.3. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 /* ============================================================
    RESPONSIVE
@@ -1071,7 +1101,7 @@ textarea:focus-visible {
 
 @media (max-width: 640px) {
   .hero { min-height: 72vh; }
-  .hero h1 { font-size: 34px; letter-spacing: 2px; }
+  .hero h1 { font-size: 38px; letter-spacing: 2px; }
   .hero__badges { gap: 18px; flex-wrap: wrap; }
   .about h2, .services__header h2, .contact h2 { font-size: 30px; letter-spacing: 1.2px; }
   .about__stats { grid-template-columns: repeat(3, 1fr); gap: 10px; }
@@ -1176,12 +1206,12 @@ textarea:focus-visible {
 
 /* Very small phones (iPhone SE / 360px-wide Androids). */
 @media (max-width: 380px) {
-  .hero h1 { font-size: 28px; letter-spacing: 1.5px; }
-  .hero__intro { font-size: 14px; }
+  .hero h1 { font-size: 32px; letter-spacing: 1.5px; }
+  .hero__intro { font-size: 15px; }
   .hero__btns .btn { padding: 13px 22px; font-size: 11px; letter-spacing: 1.5px; }
   .about h2,
   .services__header h2,
   .contact h2 { font-size: 26px; }
-  .tagline h2 { font-size: 24px; letter-spacing: 1.5px; }
+  .tagline h2 { font-size: 26px; letter-spacing: 1.5px; }
   .section-label { letter-spacing: 3px; }
 }
