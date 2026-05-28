@@ -103,8 +103,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           </div>
         </div>
         <div class="about__image reveal">
-          {/* Replace with: <img src="/images/team-onsite.jpg" alt="Crown FM team on site"> */}
-          <span class="about__image-placeholder">&#9818;</span>
+          <img src="/images/construction.jpeg" alt="Crown FM engineer reviewing site plans" loading="lazy" />
         </div>
       </div>
     </div>
@@ -286,13 +285,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             back to you the same day.
           </p>
           <a href="tel:01276582081" class="contact__phone">01276 582 081</a>
-          <a href="mailto:info@crownfm.co.uk" class="contact__email">info@crownfm.co.uk</a>
+          <a href="mailto:info@crown-fm.co.uk" class="contact__email">info@crown-fm.co.uk</a>
         </div>
 
         <form
           class="contact__form reveal"
           name="contact"
           method="POST"
+          action="/thanks"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
         >
@@ -314,7 +314,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </section>
 
   <!-- ====== FAQ ====== -->
-  <section class="faq" id="news">
+  <section class="faq" id="faq">
     <div class="container">
       <div class="faq__header">
         <p class="section-label">FAQ</p>

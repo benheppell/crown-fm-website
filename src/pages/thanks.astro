@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Enquiry received — Crown FM"
+  description="Your enquiry has been received. A named account manager will come back to you within one working day."
+  pathname="/thanks"
+>
+  <section class="thanks">
+    <div class="container">
+      <div class="thanks__card">
+        <div class="thanks__tick" aria-hidden="true">
+          <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+        <p class="section-label">Enquiry Received</p>
+        <div class="gold-rule gold-rule--center"></div>
+        <h1>Thanks. We'll be in <em>touch</em>.</h1>
+        <p>
+          We've received your enquiry. A named account manager will come back
+          to you within one working day. For active emergencies, please call
+          us — the form isn't monitored out of hours.
+        </p>
+        <a href="tel:01276582081" class="thanks__phone">01276 582 081</a>
+        <a href="/" class="btn btn--gold">Back to homepage</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

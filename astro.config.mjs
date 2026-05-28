@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.crownfm.co.uk',
+  site: 'https://www.crown-fm.co.uk',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

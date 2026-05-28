@@ -90,7 +90,7 @@ npm run build    # static build into ./dist
 
 ## Things still to do (good first tasks)
 
-- Point the `crownfm.co.uk` domain at the Netlify site (currently still
+- Point the `crown-fm.co.uk` domain at the Netlify site (currently still
   served on the random `*.netlify.app` URL).
 - Drop in real assets: company logo to replace the chess-king Unicode
   glyph in the header/footer, hero video for the dark hero background

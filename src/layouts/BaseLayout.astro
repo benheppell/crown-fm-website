@@ -14,7 +14,7 @@ const {
   pathname = "/",
 } = Astro.props;
 
-const canonical = new URL(pathname, Astro.site ?? "https://www.crownfm.co.uk").toString();
+const canonical = new URL(pathname, Astro.site ?? "https://www.crown-fm.co.uk").toString();
 ---
 
 <!doctype html>
@@ -38,9 +38,9 @@ const canonical = new URL(pathname, Astro.site ?? "https://www.crownfm.co.uk").t
     <!-- ====== TOP BAR ====== -->
     <div class="topbar">
       <div class="container">
-        <a href="mailto:info@crownfm.co.uk">
+        <a href="mailto:info@crown-fm.co.uk">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          info@crownfm.co.uk
+          info@crown-fm.co.uk
         </a>
         <a href="tel:01276582081">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -48,7 +48,7 @@ const canonical = new URL(pathname, Astro.site ?? "https://www.crownfm.co.uk").t
         </a>
         <a href="/">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-          www.crownfm.co.uk
+          www.crown-fm.co.uk
         </a>
       </div>
     </div>
@@ -68,30 +68,9 @@ const canonical = new URL(pathname, Astro.site ?? "https://www.crownfm.co.uk").t
 
         <ul class="nav" id="mainNav">
           <li><a href="/#about">Who We Are</a></li>
-          <li>
-            <a href="/#services">Soft FM &#9662;</a>
-            <ul class="dropdown">
-              <li><a href="/#services">Commercial Cleaning</a></li>
-              <li><a href="/#services">Window Cleaning</a></li>
-              <li><a href="/#services">Washroom Services</a></li>
-              <li><a href="/#services">Security Services</a></li>
-              <li><a href="/#services">Waste Management</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="/#services">Hard FM &#9662;</a>
-            <ul class="dropdown">
-              <li><a href="/#services">Reactive Maintenance</a></li>
-              <li><a href="/#services">Planned Maintenance</a></li>
-              <li><a href="/#services">Mechanical &amp; Electrical</a></li>
-              <li><a href="/#services">Fire Safety &amp; Security</a></li>
-              <li><a href="/#services">Air Conditioning</a></li>
-              <li><a href="/#services">Structural Steel Work</a></li>
-              <li><a href="/#services">Rope Access</a></li>
-            </ul>
-          </li>
+          <li><a href="/#services">Soft FM</a></li>
+          <li><a href="/#services">Hard FM</a></li>
           <li><a href="/#services">Renovations</a></li>
-          <li><a href="/#news">News</a></li>
           <li><a href="/#contact" class="nav__cta">Get In Touch</a></li>
         </ul>
 
@@ -134,14 +113,14 @@ const canonical = new URL(pathname, Astro.site ?? "https://www.crownfm.co.uk").t
             <a href="/#services">Soft FM</a>
             <a href="/#services">Hard FM</a>
             <a href="/#services">Renovations</a>
-            <a href="/#news">News</a>
+            <a href="/#faq">FAQ</a>
             <a href="/#contact">Contact</a>
           </div>
           <div class="footer__contact">
             <h4>Get In Touch</h4>
             <p><a href="tel:01276582081">01276 582 081</a></p>
-            <p><a href="mailto:info@crownfm.co.uk">info@crownfm.co.uk</a></p>
-            <p><a href="/">www.crownfm.co.uk</a></p>
+            <p><a href="mailto:info@crown-fm.co.uk">info@crown-fm.co.uk</a></p>
+            <p><a href="/">www.crown-fm.co.uk</a></p>
           </div>
         </div>
         <div class="footer__bottom">

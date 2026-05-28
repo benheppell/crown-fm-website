@@ -807,6 +807,70 @@ h1, h2, h3 {
 .contact__form .bot-field { display: none; }
 
 /* ============================================================
+   THANKS (post-submit page)
+   ============================================================ */
+.thanks {
+  padding: 110px 0;
+  background: var(--off-white);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.thanks__card {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.thanks__tick {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+}
+
+.thanks h1 {
+  font-size: 46px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.thanks h1 em { font-style: normal; color: var(--gold); }
+
+.thanks__card p {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.9;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.thanks__phone {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 32px;
+}
+
+.thanks__phone:hover { color: var(--gold-dark); }
+
+@media (max-width: 640px) {
+  .thanks { padding: 70px 0; }
+  .thanks h1 { font-size: 30px; }
+  .thanks__tick { width: 64px; height: 64px; }
+  .thanks__tick svg { width: 36px; height: 36px; }
+  .thanks__phone { font-size: 24px; }
+}
+
+/* ============================================================
    FAQ (white section)
    ============================================================ */
 .faq {
