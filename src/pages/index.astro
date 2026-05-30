@@ -9,7 +9,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <!-- ====== HERO ====== -->
   <section class="hero">
     <div class="hero__video">
-      <video autoplay muted loop playsinline preload="auto">
+      <video
+        id="heroVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        data-desktop="/images/shard-video.mp4"
+        data-mobile="/images/hero-mobile.mp4"
+      >
         <source src="/images/shard-video.mp4" type="video/mp4" />
       </video>
     </div>

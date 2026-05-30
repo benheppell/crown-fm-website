@@ -34,10 +34,55 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  setHeroVideoSource();
 
   if (prefersReducedMotion) return;
   initParallax();
 });
+
+/* ============================================================
+   HERO VIDEO — swap to a mobile-specific clip on small viewports.
+   The <video> in markup has data-desktop and data-mobile pointing
+   at the two MP4 files. We pick the right one once on load (and
+   again on a debounced resize) and call .load() / .play() to
+   re-trigger playback after the src change.
+   ============================================================ */
+function setHeroVideoSource() {
+  const video = document.getElementById('heroVideo');
+  if (!video) return;
+
+  const desktopSrc = video.dataset.desktop;
+  const mobileSrc  = video.dataset.mobile;
+  if (!desktopSrc || !mobileSrc) return;
+
+  function apply() {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const desired  = isMobile ? mobileSrc : desktopSrc;
+    const source   = video.querySelector('source');
+    if (!source) return;
+
+    // Compare against the resolved URL so it doesn't loop on every resize.
+    const current = source.getAttribute('src') || '';
+    if (current === desired) return;
+
+    source.setAttribute('src', desired);
+    video.load();
+    // Some browsers pause after a src change; nudge it back to playing.
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => { /* autoplay blocked — fine, will play on interaction */ });
+    }
+  }
+
+  apply();
+
+  // Re-evaluate on viewport breakpoint crossings (debounced).
+  let t;
+  window.addEventListener('resize', () => {
+    clearTimeout(t);
+    t = setTimeout(apply, 200);
+  }, { passive: true });
+}
 
 /* ============================================================
    PARALLAX — subtle Y-axis drift on the hero video and the
