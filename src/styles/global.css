@@ -647,11 +647,14 @@ textarea:focus-visible {
 
 .service-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: var(--shadow-md); }
 
+/* Icon inline with heading. Stops the head area feeling hollow when
+   the icon sits on its own row above a big empty band. */
 .service-card__head {
-  padding: 28px 26px 20px;
+  padding: 26px 26px 14px;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
 }
 
 /* WIDE VARIANT overrides. Doubled selector .service-card.service-card--wide
@@ -679,13 +682,20 @@ textarea:focus-visible {
 .service-card.service-card--wide:hover { transform: translateY(-3px); }
 
 .service-card.service-card--wide .service-card__head {
-  padding: 0 0 20px 0;
+  padding: 0 0 16px 0;
+  gap: 16px;
+}
+.service-card.service-card--wide .service-card__icon {
+  width: 40px;
+  height: 40px;
 }
 
 .service-card__icon {
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
   border: 1px solid var(--gold);
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -693,15 +703,16 @@ textarea:focus-visible {
 }
 
 .service-card__head h3 {
-  font-size: 28px;
+  font-size: 26px;
   letter-spacing: -0.02em;
   text-transform: none;
   margin: 0;
+  line-height: 1.1;
 }
 
-.service-card.service-card--wide .service-card__head h3 { font-size: 36px; }
+.service-card.service-card--wide .service-card__head h3 { font-size: 34px; }
 
-.service-card__body { padding: 6px 26px 26px; }
+.service-card__body { padding: 0 26px 26px; }
 
 .service-card__body > p {
   font-size: 15px;
