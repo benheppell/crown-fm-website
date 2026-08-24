@@ -321,7 +321,10 @@ textarea:focus-visible {
 /* .dropdown / .dropdown a rules removed — nav now uses plain
    anchor links, no hover menus. */
 
-.nav__cta {
+/* Extra .nav specificity so this rule wins over `.nav > li > a`
+   (which sets color: var(--text-mid) on every nav link). */
+.nav .nav__cta,
+.nav > li > .nav__cta {
   background: var(--gold);
   color: var(--black);
   margin-left: 14px;
@@ -330,7 +333,11 @@ textarea:focus-visible {
   border-radius: 4px;
 }
 
-.nav__cta:hover { background: var(--gold-light); color: var(--black); }
+.nav .nav__cta:hover,
+.nav > li > .nav__cta:hover {
+  background: var(--gold-light);
+  color: var(--black);
+}
 
 .mobile-toggle {
   /* Reset button defaults so the burger renders the same as the old div. */
@@ -607,26 +614,8 @@ textarea:focus-visible {
   gap: 28px;
 }
 
-.service-card--wide { grid-column: 1 / -1; }
-
-.service-card--wide {
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  align-items: stretch;
-}
-
-.service-card--wide .service-card__image {
-  height: 100%;
-  min-height: 380px;
-}
-
-.service-card--wide .service-card__body {
-  padding: 40px 40px 40px 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
+/* BASE card first so specificity ordering doesn't leave the wide
+   variant with a flex-column cascade winning over its grid. */
 .service-card {
   background: var(--white);
   border: 1px solid var(--border);
@@ -637,7 +626,6 @@ textarea:focus-visible {
   flex-direction: column;
 }
 
-/* Service card image — sits at the top of each card. */
 .service-card__image {
   height: 220px;
   overflow: hidden;
@@ -658,7 +646,6 @@ textarea:focus-visible {
 }
 
 .service-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: var(--shadow-md); }
-.service-card--wide:hover { transform: translateY(-3px); }
 
 .service-card__head {
   padding: 28px 26px 20px;
@@ -667,7 +654,31 @@ textarea:focus-visible {
   gap: 10px;
 }
 
-.service-card--wide .service-card__head {
+/* WIDE VARIANT overrides. Doubled selector .service-card.service-card--wide
+   guarantees higher specificity than the base .service-card rule above,
+   regardless of file ordering. */
+.service-card.service-card--wide {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: stretch;
+}
+
+.service-card.service-card--wide .service-card__image {
+  height: 100%;
+  min-height: 380px;
+}
+
+.service-card.service-card--wide .service-card__body {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.service-card.service-card--wide:hover { transform: translateY(-3px); }
+
+.service-card.service-card--wide .service-card__head {
   padding: 0 0 20px 0;
 }
 
@@ -688,7 +699,7 @@ textarea:focus-visible {
   margin: 0;
 }
 
-.service-card--wide .service-card__head h3 { font-size: 36px; }
+.service-card.service-card--wide .service-card__head h3 { font-size: 36px; }
 
 .service-card__body { padding: 6px 26px 26px; }
 
@@ -700,7 +711,7 @@ textarea:focus-visible {
   margin: 0 0 22px 0;
 }
 
-.service-card--wide .service-card__body > p { font-size: 16px; }
+.service-card.service-card--wide .service-card__body > p { font-size: 16px; }
 
 /* Service-card list — 2 columns, no dividers. Each row a single
    service name so the whole block reads as a scannable index. */
@@ -741,7 +752,7 @@ textarea:focus-visible {
 }
 
 /* Wide card gets 3 columns because it has 7 services. */
-.service-card--wide .service-card__list {
+.service-card.service-card--wide .service-card__list {
   grid-template-columns: repeat(3, 1fr);
 }
 
@@ -1305,12 +1316,12 @@ textarea:focus-visible {
   .services__header h2,
   .contact h2 { font-size: 38px; }
   .services__grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
-  .service-card--wide { grid-template-columns: 1fr; }
-  .service-card--wide .service-card__image { min-height: 240px; height: 240px; }
-  .service-card--wide .service-card__body { padding: 26px; }
-  .service-card--wide .service-card__head h3 { font-size: 28px; }
+  .service-card.service-card--wide { grid-template-columns: 1fr; }
+  .service-card.service-card--wide .service-card__image { min-height: 240px; height: 240px; }
+  .service-card.service-card--wide .service-card__body { padding: 26px; }
+  .service-card.service-card--wide .service-card__head h3 { font-size: 28px; }
   .service-card__list,
-  .service-card--wide .service-card__list { grid-template-columns: 1fr 1fr; }
+  .service-card.service-card--wide .service-card__list { grid-template-columns: 1fr 1fr; }
   .contact__grid { grid-template-columns: 1fr; gap: 50px; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .tagline h2 { font-size: 38px; }
