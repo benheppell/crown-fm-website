@@ -27,6 +27,16 @@ const canonical = new URL(pathname, Astro.site ?? "https://www.crown-fm.co.uk").
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Inter typeface — preconnect + stylesheet in the head so the
+         browser can fetch the font in parallel with the stylesheet,
+         not after it. Trimmed to the four weights actually in use. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -56,21 +66,28 @@ const canonical = new URL(pathname, Astro.site ?? "https://www.crown-fm.co.uk").
     <!-- ====== HEADER ====== -->
     <header class="header">
       <div class="container">
-        <a href="/" class="logo" aria-label="Crown Facilities Management — home">
+        <a href="/" class="logo" aria-label="Crown Facilities Management, home">
           <span class="logo__image" aria-hidden="true"></span>
         </a>
 
         <ul class="nav" id="mainNav">
-          <li><a href="/#about">Who We Are</a></li>
-          <li><a href="/#services">Soft FM</a></li>
-          <li><a href="/#services">Hard FM</a></li>
-          <li><a href="/#services">Renovations</a></li>
-          <li><a href="/#contact" class="nav__cta">Get In Touch</a></li>
+          <li><a href="/#about">Who we are</a></li>
+          <li><a href="/#hard-fm">Hard FM</a></li>
+          <li><a href="/#soft-fm">Soft FM</a></li>
+          <li><a href="/#renovations">Renovations</a></li>
+          <li><a href="/#contact" class="nav__cta">Request a quote</a></li>
         </ul>
 
-        <div class="mobile-toggle" onclick="toggleNav()">
+        <button
+          type="button"
+          class="mobile-toggle"
+          aria-label="Toggle navigation menu"
+          aria-controls="mainNav"
+          aria-expanded="false"
+          onclick="toggleNav(this)"
+        >
           <span></span><span></span><span></span>
-        </div>
+        </button>
       </div>
     </header>
 
@@ -83,31 +100,26 @@ const canonical = new URL(pathname, Astro.site ?? "https://www.crown-fm.co.uk").
       <div class="container">
         <div class="footer__grid">
           <div class="footer__brand">
-            <a href="/" class="logo" aria-label="Crown Facilities Management — home">
+            <a href="/" class="logo" aria-label="Crown Facilities Management, home">
               <span class="logo__image footer__logo" aria-hidden="true"></span>
             </a>
             <p>Complete facilities management, construction, and renovation services. One team. Every trade. Built around standards.</p>
           </div>
           <div class="footer__links">
             <h4>Services</h4>
-            <a href="/#services">Commercial Cleaning</a>
-            <a href="/#services">Reactive Maintenance</a>
-            <a href="/#services">Planned Maintenance</a>
-            <a href="/#services">Fire Safety</a>
-            <a href="/#services">Air Conditioning</a>
-            <a href="/#services">Renovations</a>
+            <a href="/#hard-fm">Hard FM</a>
+            <a href="/#soft-fm">Soft FM</a>
+            <a href="/#renovations">Renovations</a>
           </div>
           <div class="footer__links">
             <h4>Company</h4>
-            <a href="/#about">Who We Are</a>
-            <a href="/#services">Soft FM</a>
-            <a href="/#services">Hard FM</a>
-            <a href="/#services">Renovations</a>
-            <a href="/#faq">FAQ</a>
+            <a href="/#about">Who we are</a>
+            <a href="/#coverage">Areas we cover</a>
+            <a href="/#faq">Common questions</a>
             <a href="/#contact">Contact</a>
           </div>
           <div class="footer__contact">
-            <h4>Get In Touch</h4>
+            <h4>Contact</h4>
             <p><a href="tel:01276582081">01276 582 081</a></p>
             <p><a href="mailto:info@crown-fm.co.uk">info@crown-fm.co.uk</a></p>
             <p><a href="/">www.crown-fm.co.uk</a></p>

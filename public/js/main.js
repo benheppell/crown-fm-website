@@ -5,17 +5,29 @@
    Loaded as a plain <script> from BaseLayout.astro.
    ============================================================ */
 
-// FAQ Accordion — only one item open at a time.
+// FAQ Accordion — only one item open at a time. Keeps aria-expanded
+// in sync on every question button so screen readers announce state.
 function toggleFaq(el) {
   const item = el.parentElement;
   const wasOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq__item').forEach(i => i.classList.remove('open'));
-  if (!wasOpen) item.classList.add('open');
+  document.querySelectorAll('.faq__item').forEach(i => {
+    i.classList.remove('open');
+    const btn = i.querySelector('.faq__q');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+  });
+  if (!wasOpen) {
+    item.classList.add('open');
+    el.setAttribute('aria-expanded', 'true');
+  }
 }
 
-// Mobile Nav Toggle — flips the .open class on the main <ul>.
-function toggleNav() {
-  document.getElementById('mainNav').classList.toggle('open');
+// Mobile Nav Toggle — flips the .open class on the main <ul> and keeps
+// aria-expanded on the trigger button synchronised.
+function toggleNav(el) {
+  const nav = document.getElementById('mainNav');
+  const isOpen = nav.classList.toggle('open');
+  const trigger = el || document.querySelector('.mobile-toggle');
+  if (trigger) trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 }
 
 // Respect the user's reduced-motion preference. If they've opted out

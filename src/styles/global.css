@@ -1,13 +1,14 @@
-@import "tailwindcss";
-
 /* ============================================================
    CROWN FM — Main Stylesheet
    Direction B — Bold Dark. Black-led, confident, gold as gilded
    accent. Premium luxury B2B — thinks of itself as a high-end
    concierge for buildings.
-   ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+   Font loading: Inter is loaded from BaseLayout.astro's <head>
+   via preconnect + stylesheet link, not @import here, so the
+   browser can start the font fetch alongside the CSS fetch
+   instead of after it. Only 400/500/600/700 are requested.
+   ============================================================ */
 
 /* --- VARIABLES (Direction B palette) --- */
 :root {
@@ -78,8 +79,6 @@ h1 em, h2 em, h3 em {
 
 section[id] { scroll-margin-top: 110px; }
 
-.serif { font-family: 'Inter', sans-serif; font-feature-settings: "ss01" 1; }
-
 /* Section eyebrow — short rule + tracked-out gold tag.
    Use the new `.section-label` markup or `<p class="section-label"
    data-num="01">WHO WE ARE</p>` to get the leading-number style. */
@@ -137,6 +136,21 @@ textarea:focus-visible {
 
 .gold-rule--center { margin-left: auto; margin-right: auto; }
 
+/* Screen-reader-only utility. Used on form labels that are already
+   communicated visually via a placeholder, so sighted users see the
+   design as intended while AT users get a real label association. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* --- LAYOUT --- */
 .container {
   max-width: 1180px;
@@ -144,14 +158,16 @@ textarea:focus-visible {
   padding: 0 24px;
 }
 
-/* --- BUTTONS (Direction B — squared 4px radius, 56px tall) --- */
+/* --- BUTTONS (Direction B — squared 4px radius, 56px tall)
+   Inline by default so multiple buttons sit side by side in the
+   hero. Use .btn--block to opt into full-width (form submit only). */
 .btn {
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 12px;
   min-height: 56px;
-  padding: 0 22px;
+  padding: 0 26px;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 15px;
@@ -163,9 +179,16 @@ textarea:focus-visible {
   transition: background 0.25s var(--ease), transform 0.25s var(--ease),
               border-color 0.25s var(--ease), color 0.25s var(--ease);
   text-decoration: none;
+  box-sizing: border-box;
+}
+
+/* Full-width variant. Use only where the button owns its whole row
+   (e.g. the contact form submit). Keeps the arrow anchored right. */
+.btn--block {
   width: 100%;
   max-width: 360px;
-  box-sizing: border-box;
+  justify-content: space-between;
+  padding: 0 22px;
 }
 
 .btn::after {
@@ -276,31 +299,8 @@ textarea:focus-visible {
 /* Footer still uses the legacy text-based treatment (the PNG's black
    strapline would be invisible on the dark footer). The styles below
    are kept for that. */
-.logo__icon {
-  font-size: 30px;
-  color: var(--gold);
-  line-height: 1;
-}
-
-.logo__text {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 22px;
-  letter-spacing: 0.16em;
-  color: var(--black);
-  line-height: 1;
-}
-
-.logo__sub {
-  display: block;
-  font-family: 'Inter', sans-serif;
-  font-size: 8px;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-top: 4px;
-}
+/* .logo__icon / .logo__text / .logo__sub removed — the header and
+   footer both render the mask-based .logo__image now, no text mark. */
 
 /* Nav */
 .nav { display: flex; align-items: center; }
@@ -312,58 +312,39 @@ textarea:focus-visible {
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.14em;
   color: var(--text-mid);
 }
 
 .nav > li > a:hover { color: var(--gold); }
-.nav > li:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
 
-.dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 260px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-top: 2px solid var(--gold);
-  box-shadow: var(--shadow-lg);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(8px);
-  transition: all 0.3s var(--ease);
-  z-index: 100;
-}
-
-.dropdown a {
-  display: block;
-  padding: 11px 22px;
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--text-mid);
-  border-bottom: 1px solid var(--off-white);
-}
-
-.dropdown a:hover { color: var(--gold); background: var(--off-white); padding-left: 28px; }
+/* .dropdown / .dropdown a rules removed — nav now uses plain
+   anchor links, no hover menus. */
 
 .nav__cta {
-  background: var(--gold) !important;
-  color: var(--white) !important;
+  background: var(--gold);
+  color: var(--black);
   margin-left: 14px;
-  padding: 10px 24px !important;
-  letter-spacing: 1.5px !important;
+  padding: 10px 24px;
+  letter-spacing: 0.01em;
+  border-radius: 4px;
 }
 
-.nav__cta:hover { background: var(--gold-light) !important; }
+.nav__cta:hover { background: var(--gold-light); color: var(--black); }
 
 .mobile-toggle {
+  /* Reset button defaults so the burger renders the same as the old div. */
   display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  margin: -8px;
 }
 
-.mobile-toggle span { width: 26px; height: 2px; background: var(--black); transition: all 0.3s; }
+.mobile-toggle span { width: 26px; height: 2px; background: var(--black); transition: all 0.3s; display: block; }
 
 /* ============================================================
    HERO (dark section — video ready)
@@ -386,15 +367,6 @@ textarea:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.hero__video--placeholder {
-  width: 100%;
-  height: 100%;
-  background:
-    radial-gradient(ellipse at 25% 50%, rgba(201,165,78,0.07) 0%, transparent 55%),
-    radial-gradient(ellipse at 75% 30%, rgba(201,165,78,0.04) 0%, transparent 50%),
-    linear-gradient(135deg, #080808, #141414);
 }
 
 .hero__overlay {
@@ -536,47 +508,54 @@ textarea:focus-visible {
   margin-bottom: 16px;
 }
 
+/* Hairline stat row on the white ground. The dark tiles were the only
+   dark thing in the section and read as pasted-in components; a
+   light-on-light rule row sits consistently with the surrounding
+   copy and lets the gold numerals do the visual work. */
 .about__stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 36px;
+  gap: 0;
+  margin-top: 40px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .about__stat {
-  text-align: center;
-  padding: 22px 12px;
-  background: var(--charcoal);
-  border: 1px solid var(--border-dark);
-  border-radius: 4px;
+  text-align: left;
+  padding: 24px 20px 24px 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 6px;
 }
 
 /* Vertical divider between stats inside a grid */
 .about__stats .about__stat + .about__stat {
-  border-left: 1px solid var(--border-dark);
+  border-left: 1px solid var(--border);
+  padding-left: 20px;
 }
 
 .about__stat-num {
   font-family: 'Inter', sans-serif;
-  font-size: 36px;
-  font-weight: 700;
-  color: var(--gold);
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--gold-dark);
   line-height: 1;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
   margin-bottom: 0;
   font-variant-numeric: tabular-nums;
 }
 
 .about__stat span {
   font-size: 10px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--text-white-muted);
+  color: var(--text-mid);
 }
 
 .about__image {
@@ -590,13 +569,6 @@ textarea:focus-visible {
 }
 
 .about__image img { width: 100%; height: 100%; object-fit: cover; }
-
-.about__image-placeholder {
-  font-family: 'Cinzel', serif;
-  font-size: 90px;
-  color: var(--gold);
-  opacity: 0.1;
-}
 
 /* ============================================================
    SERVICES (off-white section)
@@ -626,17 +598,40 @@ textarea:focus-visible {
   line-height: 1.6;
 }
 
+/* Asymmetric services grid: Hard FM full-width top row (2-col
+   internal split — image left, copy right), then Soft FM and
+   Renovations 2-up beneath. */
 .services__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.service-card--wide { grid-column: 1 / -1; }
+
+.service-card--wide {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: stretch;
+}
+
+.service-card--wide .service-card__image {
+  height: 100%;
+  min-height: 380px;
+}
+
+.service-card--wide .service-card__body {
+  padding: 40px 40px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .service-card {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 4px;
-  transition: all 0.35s var(--ease);
+  transition: transform 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -663,21 +658,17 @@ textarea:focus-visible {
 }
 
 .service-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.service-card--wide:hover { transform: translateY(-3px); }
 
 .service-card__head {
-  padding: 28px 26px 22px;
-  border-bottom: 1px solid var(--border);
-  position: relative;
+  padding: 28px 26px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.service-card__head::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 26px;
-  width: 28px;
-  height: 1px;
-  background: var(--gold);
+.service-card--wide .service-card__head {
+  padding: 0 0 20px 0;
 }
 
 .service-card__icon {
@@ -687,73 +678,71 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 14px;
   color: var(--gold);
 }
 
 .service-card__head h3 {
-  font-size: 24px;
+  font-size: 28px;
   letter-spacing: -0.02em;
   text-transform: none;
+  margin: 0;
 }
 
-.service-card__body { padding: 20px 26px 28px; }
+.service-card--wide .service-card__head h3 { font-size: 36px; }
+
+.service-card__body { padding: 6px 26px 26px; }
 
 .service-card__body > p {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-mid);
   line-height: 1.65;
   font-weight: 400;
-  margin-bottom: 18px;
+  margin: 0 0 22px 0;
 }
 
-.service-card__link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 0;
-  font-size: 13px;
-  color: var(--text-mid);
-  border-bottom: 1px solid var(--off-white);
-  font-weight: 400;
-}
+.service-card--wide .service-card__body > p { font-size: 16px; }
 
-.service-card__link::before {
-  content: '';
-  width: 6px;
-  height: 1px;
-  background: var(--gold);
-  flex-shrink: 0;
-  transition: all 0.3s;
-}
-
-.service-card__link:hover { color: var(--gold); padding-left: 6px; }
-.service-card__link:hover::before { width: 14px; }
-
-/* Service-card list: short, scannable, one bold service name per row. */
+/* Service-card list — 2 columns, no dividers. Each row a single
+   service name so the whole block reads as a scannable index. */
 .service-card__list {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+  row-gap: 12px;
 }
 
 .service-card__list li {
-  padding: 14px 0;
+  padding: 4px 0;
   font-size: 15px;
   color: var(--text);
-  line-height: 1.4;
-  border-bottom: 1px solid var(--border);
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  position: relative;
+  padding-left: 14px;
 }
 
-.service-card__list li:last-child {
-  border-bottom: none;
+.service-card__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 6px;
+  height: 1px;
+  background: var(--gold);
 }
 
 .service-card__list li strong {
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text);
+}
+
+/* Wide card gets 3 columns because it has 7 services. */
+.service-card--wide .service-card__list {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 /* ============================================================
@@ -791,78 +780,37 @@ textarea:focus-visible {
 
 .tagline h2 em { font-style: normal; color: var(--gold); font-weight: 600; }
 
-.tagline__badges {
-  display: flex;
-  justify-content: center;
-  gap: 48px;
-  margin-top: 36px;
-  position: relative;
-  z-index: 1;
-}
-
-.tagline__badge {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--text-white);
-}
-
-.tagline__badge svg { color: var(--gold); }
+/* .tagline__badges / .tagline__badge / .tagline__badge svg removed —
+   the duplicate trust chips beneath the tagline were saying the
+   same thing as the hero badge strip. Tagline now stands alone. */
 
 /* ============================================================
-   CLIENTS (white section)
+   COVERAGE ("Areas we cover")
+   Cream ground so the section sits between the dark Tagline and
+   dark Testimonial as visual relief — breaks the 3-in-a-row dark
+   band the audit called out.
+   Two-column on desktop: text left, map (dark asset) right.
    ============================================================ */
-.clients {
-  padding: 55px 0;
-  background: var(--white);
+.coverage {
+  background: var(--off-white);
+  padding: 110px 0;
+  color: var(--text);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
 
-.clients .section-label { text-align: center; margin-bottom: 28px; }
-
-.clients__row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-  flex-wrap: wrap;
-}
-
-.clients__name {
-  font-family: 'Inter', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: rgba(0,0,0,0.18);
-  letter-spacing: -0.01em;
-  transition: all 0.35s var(--ease);
-  white-space: nowrap;
-}
-
-.clients__name:hover { color: var(--gold); }
-
-/* ============================================================
-   COVERAGE (dark section, "Areas we cover")
-   Two-column on desktop: text left, gold-and-black map right.
-   ============================================================ */
-.coverage {
-  background: var(--black);
-  padding: 110px 0;
-  color: var(--ink);
-}
-
 .coverage__grid {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 72px;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
   align-items: center;
 }
 
-.coverage__copy { max-width: 480px; }
+/* Order flip: map dominates on the left, copy sits to the right.
+   About uses text-left/image-right, Contact uses text-left/form-right —
+   flipping Coverage stops the page looking like the same shape 3x. */
+.coverage__map { order: 1; }
+.coverage__copy { order: 2; max-width: 420px; }
 
 .coverage h2 {
   font-family: 'Inter', sans-serif;
@@ -870,28 +818,28 @@ textarea:focus-visible {
   font-weight: 700;
   line-height: 0.96;
   letter-spacing: -0.04em;
-  color: var(--ink);
+  color: var(--black);
   margin: 0 0 28px;
   text-transform: none;
 }
 
 .coverage h2 em {
   font-style: normal;
-  color: var(--gold);
+  color: var(--gold-dark);
   font-weight: 600;
 }
 
 .coverage p {
   font-size: 17px;
   font-weight: 400;
-  color: var(--text-white-muted);
+  color: var(--text-mid);
   line-height: 1.6;
   margin: 0;
   letter-spacing: -0.005em;
 }
 
 .coverage .section-label {
-  color: var(--gold);
+  color: var(--gold-dark);
   margin-bottom: 20px;
 }
 
@@ -899,16 +847,17 @@ textarea:focus-visible {
   width: 100%;
   height: auto;
   display: block;
-  /* Subtle gold edge so the map reads as an intentional asset. */
-  border: 1px solid var(--border-dark);
+  /* Subtle warm edge so the dark map sits cleanly on the cream ground. */
+  border: 1px solid var(--border);
+  border-radius: 4px;
 }
 
 @media (max-width: 1024px) {
   .coverage { padding: 80px 0; }
   .coverage__grid { grid-template-columns: 1fr; gap: 40px; }
-  .coverage__copy { max-width: none; }
+  .coverage__copy { max-width: none; order: 0; }
+  .coverage__map { max-width: 640px; margin: 0 auto; order: 1; }
   .coverage h2 { font-size: 52px; }
-  .coverage__map { max-width: 640px; margin: 0 auto; }
 }
 
 @media (max-width: 640px) {
@@ -942,44 +891,46 @@ textarea:focus-visible {
   font-style: normal;
   color: var(--ink);
   line-height: 1.3;
-  margin-bottom: 28px;
-  position: relative;
+  margin: 0 0 32px 0;
   letter-spacing: -0.02em;
+  quotes: '\201C' '\201D';
 }
 
+/* Small gold quote-mark before the quote, sitting inline rather
+   than pseudo-overlapping the (now-deleted) eyebrow. */
 .testimonial__quote::before {
-  content: '\201C';
-  font-size: 110px;
+  content: open-quote;
   color: var(--gold);
-  opacity: 0.15;
-  position: absolute;
-  top: -45px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: Georgia, serif;
-  line-height: 1;
+  margin-right: 4px;
+}
+
+.testimonial__quote::after {
+  content: close-quote;
+  color: var(--gold);
+  margin-left: 4px;
 }
 
 .testimonial__name {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--gold);
+  margin: 0;
 }
 
 .testimonial__role {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-white-muted);
-  margin-top: 4px;
-  letter-spacing: 1px;
+  margin: 4px 0 0 0;
+  letter-spacing: 0.5px;
 }
 
 .testimonial__stars {
   color: var(--gold);
   font-size: 15px;
   letter-spacing: 5px;
-  margin-top: 18px;
+  margin-top: 20px;
 }
 
 /* ============================================================
@@ -993,17 +944,15 @@ textarea:focus-visible {
   border-top: 1px solid var(--border);
 }
 
-.accreditations__header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
+/* Auto-fit grid so rows fill evenly instead of leaving orphans on
+   the second line. 11 logos at ~110px min will lay out as 6+5 on
+   desktop and gracefully re-flow at smaller widths. */
 .accreditations__row {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 32px 40px;
   align-items: center;
-  gap: 36px 48px;
-  flex-wrap: wrap;
+  justify-items: center;
 }
 
 .accred {
@@ -1078,8 +1027,8 @@ textarea:focus-visible {
 .contact__email {
   display: block;
   margin-top: 6px;
-  font-size: 14px;
-  color: var(--text-light);
+  font-size: 15px;
+  color: var(--text-mid);
   letter-spacing: 0.5px;
 }
 
@@ -1103,7 +1052,7 @@ textarea:focus-visible {
 }
 
 .contact__form input::placeholder,
-.contact__form textarea::placeholder { color: #bbb; }
+.contact__form textarea::placeholder { color: #767268; }
 
 .contact__form input:focus,
 .contact__form textarea:focus { outline: none; border-color: var(--gold); }
@@ -1145,7 +1094,7 @@ textarea:focus-visible {
 .thanks h1 {
   font-size: 46px;
   margin-bottom: 20px;
-  letter-spacing: 2px;
+  letter-spacing: -0.03em;
 }
 
 .thanks h1 em { font-style: normal; color: var(--gold); }
@@ -1160,7 +1109,7 @@ textarea:focus-visible {
 
 .thanks__phone {
   display: block;
-  font-family: 'Cinzel', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 30px;
   font-weight: 700;
   color: var(--gold);
@@ -1204,18 +1153,29 @@ textarea:focus-visible {
 .faq__item:hover { border-color: rgba(201,165,78,0.35); }
 
 .faq__q {
+  /* Reset button chrome so it renders identically to the old div. */
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  text-align: left;
   padding: 18px 24px;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
 }
 
 .faq__q:hover { color: var(--gold); }
-.faq__q .arrow { color: var(--gold); font-size: 13px; transition: all 0.3s; }
+.faq__q .arrow {
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease);
+}
 .faq__item.open .faq__q .arrow { transform: rotate(180deg); }
 
 .faq__a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
@@ -1268,9 +1228,8 @@ textarea:focus-visible {
 
 /* Keep the old footer logo text styles for backwards-compat, though
    they're now unused in markup. */
-.footer__brand .logo__text { color: var(--ink); }
-.footer__brand .logo__icon { color: var(--gold); }
-.footer__brand .logo__sub { color: var(--gold); }
+/* .footer__brand .logo__text/icon/sub removed — the footer now
+   uses the mask-based .footer__logo image. */
 
 .footer__brand p {
   font-size: 14px;
@@ -1305,9 +1264,9 @@ textarea:focus-visible {
 .footer__bottom {
   padding: 20px 0;
   text-align: center;
-  font-size: 11px;
-  color: rgba(255,255,255,0.2);
-  letter-spacing: 0.5px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.3px;
 }
 
 /* ============================================================
@@ -1345,7 +1304,13 @@ textarea:focus-visible {
   .about h2,
   .services__header h2,
   .contact h2 { font-size: 38px; }
-  .services__grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  .services__grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+  .service-card--wide { grid-template-columns: 1fr; }
+  .service-card--wide .service-card__image { min-height: 240px; height: 240px; }
+  .service-card--wide .service-card__body { padding: 26px; }
+  .service-card--wide .service-card__head h3 { font-size: 28px; }
+  .service-card__list,
+  .service-card--wide .service-card__list { grid-template-columns: 1fr 1fr; }
   .contact__grid { grid-template-columns: 1fr; gap: 50px; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .tagline h2 { font-size: 38px; }
@@ -1364,19 +1329,6 @@ textarea:focus-visible {
   }
 
   .nav.open > li > a { padding: 12px 0; }
-
-  .dropdown {
-    position: static;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    border: none;
-    box-shadow: none;
-    padding-left: 16px;
-    display: none;
-  }
-
-  .nav.open li:hover .dropdown { display: block; }
 }
 
 @media (max-width: 640px) {
@@ -1384,19 +1336,9 @@ textarea:focus-visible {
   .hero h1 { font-size: 56px; letter-spacing: -0.04em; }
   .hero__intro { font-size: 16px; }
   .about h2, .services__header h2, .contact h2 { font-size: 36px; letter-spacing: -0.035em; }
-  .about__stats {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    background: var(--charcoal);
-    border: 1px solid var(--border-dark);
-    border-radius: 4px;
-  }
-  .about__stat { padding: 18px 8px; background: transparent; border: none; border-radius: 0; }
-  .about__stat + .about__stat { border-left: 1px solid var(--border-dark); }
-  .about__stat-num { font-size: 26px; }
-  .tagline__badges { flex-direction: column; gap: 14px; align-items: center; }
-  .clients__row { gap: 20px; }
-  .clients__name { font-size: 16px; }
+  .about__stat { padding: 18px 12px 18px 0; }
+  .about__stat + .about__stat { padding-left: 12px; }
+  .about__stat-num { font-size: 30px; }
   .footer__grid { grid-template-columns: 1fr; }
   .testimonial__quote { font-size: 22px; letter-spacing: -0.015em; }
   .faq__header h2 { font-size: 30px; }
@@ -1428,15 +1370,10 @@ textarea:focus-visible {
   .topbar .container a:nth-child(3) { display: none; }
 }
 
-/* Logo: shrink the wordmark so it doesn't crowd the burger menu.
-   The .logo__image rule applies to the header PNG; the rest are
-   only relevant to the footer's legacy text-based treatment. */
+/* Logo: shrink the PNG lockup so it doesn't crowd the burger. */
 @media (max-width: 640px) {
   .logo { gap: 10px; }
   .logo__image { height: 46px; }
-  .logo__icon { font-size: 24px; }
-  .logo__text { font-size: 22px; letter-spacing: 4px; }
-  .logo__sub { font-size: 7px; letter-spacing: 4px; }
 }
 
 @media (max-width: 380px) {
@@ -1459,7 +1396,7 @@ textarea:focus-visible {
    running off the side of small screens. */
 @media (max-width: 640px) {
   .tagline { padding: 60px 0; }
-  .tagline h2 { font-size: 28px; letter-spacing: 2px; }
+  .tagline h2 { font-size: 28px; letter-spacing: -0.03em; }
 }
 
 /* Section vertical rhythm: 110px is heavy for phones. Pull all of
@@ -1475,13 +1412,12 @@ textarea:focus-visible {
 /* About image: keep proportions but stop it dominating the page. */
 @media (max-width: 640px) {
   .about__image { height: 240px; }
-  .about__image-placeholder { font-size: 60px; }
 }
 
 /* Accreditations: tighter spacing and smaller logos on phones. */
 @media (max-width: 640px) {
   .accreditations { padding: 48px 0; }
-  .accreditations__row { gap: 24px 32px; }
+  .accreditations__row { grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 22px 24px; }
   .accred { height: 44px; }
   .accred img { max-width: 100px; }
 }
